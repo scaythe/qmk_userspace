@@ -331,7 +331,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | Boot | Debug|      |      |      |      |      |      |      |      |  Del |
+ * |      | Boot | Debug| Audio|      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |QWERTY|BWPO Q|BWPO C|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
@@ -343,9 +343,58 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [_ADJUST] = LAYOUT_preonic_grid( \
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
-  XXXXXXX, QK_BOOT, DB_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  \
+  XXXXXXX, QK_BOOT, DB_TOGG, AU_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QWERTY,   BWPO_FQ, BWPO_FC, XXXXXXX, XXXXXXX, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QWERTY_S, BWPO_FA, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  \
 )
 };
+
+#ifdef AUDIO_ENABLE
+// Plays a short sound when a Lower, Raise, Adjust or symbol layer, or a one-shot
+// modifier, is activated or released
+
+#define LAYER_BIT(layer) ((layer_state_t)1 << (layer))
+#define SYMBOL_LAYERS (LAYER_BIT(_Q_SYMB) | LAYER_BIT(_BFQ_SYMB) | LAYER_BIT(_BFA_SYMB) | LAYER_BIT(_BFC_SYMB))
+#define SIGNALED_LAYERS (LAYER_BIT(_LOWER) | LAYER_BIT(_RAISE) | LAYER_BIT(_ADJUST) | SYMBOL_LAYERS)
+
+static float adjust_on_song[][2] = SONG(S__NOTE(_C6));
+static float raise_on_song[][2] = SONG(S__NOTE(_G5));
+static float symbols_on_song[][2] = SONG(S__NOTE(_E5));
+static float lower_on_song[][2] = SONG(S__NOTE(_C5));
+static float layer_off_song[][2] = SONG(S__NOTE(_C4));
+static float oneshot_mods_on_song[][2] = SONG(S__NOTE(_A5), S__NOTE(_A5));
+static float oneshot_mods_off_song[][2] = SONG(S__NOTE(_A4));
+
+static bool layers_turned_on(layer_state_t before, layer_state_t after, layer_state_t layers);
+static bool layers_turned_off(layer_state_t before, layer_state_t after, layer_state_t layers);
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  if (layers_turned_on(layer_state, state, LAYER_BIT(_ADJUST)))
+    PLAY_SONG(adjust_on_song);
+  else if (layers_turned_on(layer_state, state, LAYER_BIT(_RAISE)))
+    PLAY_SONG(raise_on_song);
+  else if (layers_turned_on(layer_state, state, LAYER_BIT(_LOWER)))
+    PLAY_SONG(lower_on_song);
+  else if (layers_turned_on(layer_state, state, SYMBOL_LAYERS))
+    PLAY_SONG(symbols_on_song);
+  else if (layers_turned_off(layer_state, state, SIGNALED_LAYERS))
+    PLAY_SONG(layer_off_song);
+  return state;
+}
+
+void oneshot_mods_changed_user(uint8_t mods) {
+  if (mods)
+    PLAY_SONG(oneshot_mods_on_song);
+  else
+    PLAY_SONG(oneshot_mods_off_song);
+}
+
+static bool layers_turned_on(layer_state_t before, layer_state_t after, layer_state_t layers) {
+  return (~before & after & layers) != 0;
+}
+
+static bool layers_turned_off(layer_state_t before, layer_state_t after, layer_state_t layers) {
+  return (before & ~after & layers) != 0;
+}
+#endif

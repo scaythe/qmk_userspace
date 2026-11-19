@@ -15,5 +15,8 @@ delay set by `ONESHOT_TIMEOUT` in `config.h`.
 On the layers for a host with a standard QWERTY or AZERTY layout, Shift is a
 regular key. Holding Lower and Raise activates the Adjust layer.
 
+The keyboard plays a short sound when a Lower, Raise, Adjust or symbol layer, or
+a one-shot modifier, is activated or released. The Audio key of the Adjust layer turns the audio on or off.
+
 Keys on the Adjust layer switch to the layers that produce the same layout on a
 host that uses a standard QWERTY or AZERTY layout.
