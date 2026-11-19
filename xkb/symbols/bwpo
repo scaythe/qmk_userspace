@@ -5,13 +5,13 @@
 // ┃ Esc ┃ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   ┃ F13 ┃
 // ┣━━━━━╉─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╊━━━━━┫
 // ┃ ↹   ┃ B   │ W É │ P   │ O   │ Z   │ M   │ V   │ D   │ L   │ J   ┃     ┃
-// ┃ Tab ┃ b | │ w é │ p & │ o [ │ z ] │ m   │ v = │ d # │ l $ │ j ^ ┃ Comp┃
+// ┃ Tab ┃ b | │ w é │ p & │ o [ │ z ] │ m   │ v = │ d % │ l ^ │ j $ ┃ Comp┃
 // ┣━━━━━╉─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╊━━━━━┫
 // ┃ ⌫   ┃ A À │ U   │ I   │ E   │ ;   │ C   │ T   │ S   │ R   │ N   ┃     ┃
 // ┃ Bksp┃ a à │ u < │ i > │ e ( │ , ) │ c @ │ t + │ s - │ r / │ n * ┃ Del ┃
 // ┣━━━━━╉─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╊━━━━━┫
 // ┃ ⇧   ┃ !   │ Y   │ X   │ : È │ K   │ ?   │ Q   │ G   │ H   │ F Ç ┃ ⇧   ┃
-// ┃ Shft┃ " \ │ y { │ x } │ . è │ k ~ │ '   │ q _ │ g ` │ h % │ f ç ┃ Shft┃
+// ┃ Shft┃ " \ │ y { │ x } │ . è │ k ~ │ '   │ q _ │ g ` │ h # │ f ç ┃ Shft┃
 // ┣━━━━━╋━━━━━╈━━━━━╈━━━━━╈━━━━━╅─────╆━━━━━╈━━━━━╈━━━━━╈━━━━━╈━━━━━╋━━━━━┫
 // ┃     ┃     ┃     ┃     ┃     ┃ ␣   ┃ ⏎   ┃     ┃     ┃     ┃     ┃     ┃
 // ┃ Ctrl┃ Meta┃ Alt ┃ Down┃ AltG┃ Spc ┃ Ret ┃ AltG┃ Up  ┃ Alt ┃ Meta┃ Ctrl┃
@@ -39,13 +39,13 @@ default xkb_symbols "preonic" {
 // │ F13 │ 1   │ 2   │ 3   │ 4   │ 5   │ 6   │ 7   │ 8   │ 9   │ 0   │     │     ┃         ┃
 // ┢━━━━━┷━┱───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┴─┬───┺━┳━━━━━━━┫
 // ┃	   ┃ B   │ W É │ P   │ O   │ Z   │ M   │ V   │ D   │ L   │ J   │     │     ┃Ret    ┃
-// ┃Tab ↹  ┃ b | │ w é │ p & │ o [ │ z ] │ m   │ v = │ d # │ l $ │ j ^ │Comp │     ┃   ⏎   ┃
+// ┃Tab ↹  ┃ b | │ w é │ p & │ o [ │ z ] │ m   │ v = │ d % │ l ^ │ j $ │Comp │     ┃   ⏎   ┃
 // ┣━━━━━━━┻┱────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┴┬────┺┓	   ┃
 // ┃⌫ Bksp  ┃ A À │ U   │ I   │ E   │ ;   │ C   │ T   │ S   │ R   │ N   │     │     ┃	   ┃
 // ┃        ┃ a à │ u < │ i > │ e ( │ , ) │ c @ │ t + │ s - │ r / │ n * │ Del │     ┃	   ┃
 // ┣━━━━━━━┳┹────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┬┴────┲┷━━━━━┻━━━━━━┫
 // ┃	   ┃     │ !   │ Y   │ X   │ : È │ K   │ ?   │ Q   │ G   │ H   │ F Ç ┃             ┃
-// ┃Shift ⇧┃     │ " \ │ y { │ x } │ . è │ k ~ │ '   │ q _ │ g ` │ h % │ f ç ┃Shift ⇧	   ┃
+// ┃Shift ⇧┃     │ " \ │ y { │ x } │ . è │ k ~ │ '   │ q _ │ g ` │ h # │ f ç ┃Shift ⇧	   ┃
 // ┣━━━━━━━╋━━━━━┷━┳━━━┷━━━┱─┴─────┴─────┴─────┴─────┴─────┴───┲━┷━━━━━╈━━━━━┻━┳━━━━━━━┳━━━┛
 // ┃	   ┃	   ┃	   ┃                                   ┃       ┃       ┃       ┃
 // ┃Ctrl   ┃Meta   ┃Alt    ┃ ␣ Spc                             ┃AltGr ⇮┃Meta   ┃Ctrl   ┃
@@ -86,9 +86,9 @@ xkb_symbols "common" {
     key <AD05> { [ z, Z, bracketright ] };
     key <AD06> { [ m, M ] };
     key <AD07> { [ v, V, equal ] };
-    key <AD08> { [ d, D, numbersign ] };
-    key <AD09> { [ l, L, dollar ] };
-    key <AD10> { [ j, J, asciicircum ] };
+    key <AD08> { [ d, D, percent ] };
+    key <AD09> { [ l, L, asciicircum ] };
+    key <AD10> { [ j, J, dollar ] };
 
     key <AC01> { [ a, A, agrave, Agrave ] };
     key <AC02> { [ u, U, less ] };
@@ -109,7 +109,7 @@ xkb_symbols "common" {
     key <AB06> { [ apostrophe, question ] };
     key <AB07> { [ q, Q, underscore ] };
     key <AB08> { [ g, G, grave ] };
-    key <AB09> { [ h, H, percent ] };
+    key <AB09> { [ h, H, numbersign ] };
     key <AB10> { [ f, F, ccedilla, Ccedilla ] };
 
     // Slash without AltGr, so that Ctrl with this key gives the Ctrl+/ shortcuts
