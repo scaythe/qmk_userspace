@@ -2,10 +2,12 @@ name: Build QMK firmware
 
 on:
   push:
-    # The xkb layout and the documentation do not change the firmware
+    # The xkb layout, the documentation and the KLE diagrams do not change the
+    # firmware
     paths-ignore:
       - 'xkb/**'
       - '**.md'
+      - '**.kle.json'
   workflow_dispatch:
 
 permissions:
