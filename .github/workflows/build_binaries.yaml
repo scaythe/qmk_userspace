@@ -1,6 +1,12 @@
 name: Build QMK firmware
 
-on: [push, workflow_dispatch]
+on:
+  push:
+    # The xkb layout and the documentation do not change the firmware
+    paths-ignore:
+      - 'xkb/**'
+      - '**.md'
+  workflow_dispatch:
 
 permissions:
   contents: write
