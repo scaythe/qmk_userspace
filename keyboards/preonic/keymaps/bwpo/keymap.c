@@ -33,10 +33,10 @@ enum preonic_layers {
   _ADJUST
 };
 
-enum preonic_keycodes {
-  LOWER = SAFE_RANGE,
-  RAISE
-};
+// Holding Lower then Raise, or Raise then Lower, activates the Adjust layer
+#define LOWER OSL(_LOWER)
+#define RAISE OSL(_RAISE)
+#define ADJUST MO(_ADJUST)
 
 #define QWERTY TO(_QWERTY)
 #define QWERTY_S TO(_QWERTY_SYMBOLS)
@@ -287,7 +287,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      | Undo |  Cut | Copy |Paste |  F13 | PgDn | Left | Down |Right |PrtScr|      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |Adjust|      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid( \
@@ -295,7 +295,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
   _______, XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_MPLY,    KC_ESC,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_INS,  _______, \
   _______, LCTL(KC_T), LCTL(KC_C), LCTL(KC_H), LCTL(KC_U), KC_F13,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_PSCR, _______, \
-  _______, _______,    _______,    _______,    _______,    _______, _______, _______, _______, _______, _______, _______  \
+  _______, _______,    _______,    _______,    _______,    _______, _______, _______, ADJUST,  _______, _______, _______  \
 ),
 
 /* Raise
@@ -310,7 +310,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Shift |      |      |      |      |   ù  |   0  |   1  |   2  |   3  |Enter |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | Alt  |Lower |AltGr |Space |Enter |AltGr |Raise | Alt  | GUI  | Ctrl |
+ * | Ctrl | GUI  | Alt  |Adjust|AltGr |Space |Enter |AltGr |Raise | Alt  | GUI  | Ctrl |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
@@ -318,7 +318,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PAST, KC_KP_7, KC_KP_8, KC_KP_9, KC_PMNS, _______, \
   _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_PSLS, KC_KP_4, KC_KP_5, KC_KP_6, KC_PPLS, _______, \
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, KC_KP_0, KC_KP_1, KC_KP_2, KC_KP_3, KC_PENT, _______, \
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
+  _______, _______, _______, ADJUST,  _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 /* Adjust (Lower + Raise)
@@ -343,23 +343,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  \
 )
 };
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  switch (keycode) {
-    case LOWER:
-      if (record->event.pressed)
-        layer_on(_LOWER);
-      else
-        layer_off(_LOWER);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      return false;
-    case RAISE:
-      if (record->event.pressed)
-        layer_on(_RAISE);
-      else
-        layer_off(_RAISE);
-      update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      return false;
-  }
-  return true;
-}

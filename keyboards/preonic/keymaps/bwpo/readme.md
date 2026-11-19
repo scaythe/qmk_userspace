@@ -8,5 +8,9 @@ The default layer sends QWERTY keycodes, and the host translates them with the
 contains this layout. To install it on Linux, copy that folder to
 `~/.config/xkb`.
 
+Lower and Raise are one-shot layer keys. A tap activates the layer for the next
+key only, and holding the key activates the layer until its release. Holding
+both activates the Adjust layer.
+
 Keys on the Adjust layer switch to the layers that produce the same layout on a
 host that uses a standard QWERTY or AZERTY layout.
