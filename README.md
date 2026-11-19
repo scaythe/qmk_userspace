@@ -35,9 +35,16 @@ This is a template repository which allows for an external set of QMK keymaps to
 1. `cd` into this repository's clone directory
 1. Set global userspace path: `qmk config user.overlay_dir="$(realpath .)"` -- you MUST be located in the cloned userspace location for this to work correctly
     * This will be automatically detected if you've `cd`ed into your userspace repository, but the above makes your userspace available regardless of your shell location.
-1. Compile normally: `qmk compile -kb your_keyboard -km your_keymap` or `make your_keyboard:your_keymap`
+1. Compile normally: `qmk compile -kb your_keyboard -km your_keymap`
 
 Alternatively, if you configured your build targets above, you can use `qmk userspace-compile` to build all of your userspace targets at once.
+
+## Tasks
+
+`mise.toml` and the `mise-tasks` folder define tasks that mise runs with the tools of the `[tools]` section of `mise.toml`:
+
+- `mise run flash-preonic` flashes the Preonic with the firmware of the latest GitHub release. The [readme of the Preonic keymap](keyboards/preonic/keymaps/bwpo/readme.md#flashing) describes this task
+- `mise run lint` checks that the Nushell scripts of the tasks parse
 
 ## Extra info
 

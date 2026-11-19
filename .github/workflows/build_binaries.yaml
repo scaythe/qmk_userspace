@@ -2,12 +2,15 @@ name: Build QMK firmware
 
 on:
   push:
-    # The xkb layout, the documentation and the KLE diagrams do not change the
-    # firmware
+    # The xkb layout, the documentation, the KLE diagrams, the mise tasks and the
+    # distrobox manifest do not change the firmware
     paths-ignore:
       - 'xkb/**'
       - '**.md'
       - '**.kle.json'
+      - 'mise.toml'
+      - 'mise-tasks/**'
+      - 'distrobox.ini'
   workflow_dispatch:
 
 permissions:
