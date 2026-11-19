@@ -21,7 +21,6 @@
 // TLDE, AE11 (-), AE12 (=)
 // AD11 ([), AD12 (])
 // AC11 ('), BKSL
-// LSGT
 
 
 default xkb_symbols "preonic" {
@@ -65,8 +64,6 @@ xkb_symbols "full" {
 
     key <CAPS> { [ BackSpace ] };
     key <AC11> { [ Delete ] };
-
-    key <LSGT> { [ slash ] }; // extra
 };
 
 partial alphanumeric_keys
@@ -114,4 +111,7 @@ xkb_symbols "common" {
     key <AB08> { [ g, G, grave ] };
     key <AB09> { [ h, H, percent ] };
     key <AB10> { [ f, F, ccedilla, Ccedilla ] };
+
+    // Slash without AltGr, so that Ctrl with this key gives the Ctrl+/ shortcuts
+    key <LSGT> { [ slash ] };
 };
