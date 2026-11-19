@@ -1,0 +1,274 @@
+[
+  {
+    "name": "Preonic simple bwpo"
+  },
+  [
+    {
+      "a": 7
+    },
+    "Esc",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "0",
+    "F13"
+  ],
+  [
+    "Tab",
+    {
+      "a": 4
+    },
+    "B\n\n\n|",
+    "W\n\nÉ",
+    "P\n\n\n&",
+    "O\n\n\n[",
+    "Z\n\n\n]",
+    "M",
+    "V\n\n\n=",
+    "D\n\n\n#",
+    "L\n\n\n$",
+    "J\n\n\n^",
+    {
+      "a": 7
+    },
+    "Comp ose"
+  ],
+  [
+    "Back Space",
+    {
+      "a": 4
+    },
+    "A\n\nÀ",
+    "U\n\n\n<",
+    "I\n\n\n>",
+    {
+      "n": true
+    },
+    "E\n\n\n(",
+    ";\n,\n\n)",
+    "C\n\n\n@",
+    {
+      "n": true
+    },
+    "T\n\n\n+",
+    "S\n\n\n-",
+    "R\n\n\n/",
+    "N\n\n\n*",
+    {
+      "a": 7
+    },
+    "Delete"
+  ],
+  [
+    "Shift",
+    {
+      "a": 4
+    },
+    "!\n\"\n\n\\",
+    "Y\n\n\n{",
+    "X\n\n\n}",
+    ":\n.\nÈ",
+    "K\n\n\n~",
+    "?\n'",
+    "Q\n\n\n_",
+    "G\n\n\n`",
+    "H\n\n\n%",
+    "F\n\nÇ",
+    {
+      "a": 7
+    },
+    "Shift"
+  ],
+  [
+    "Ctrl",
+    "Sys",
+    "Alt",
+    "&dArr;",
+    "AltGr",
+    "Space",
+    "Enter",
+    "AltGr",
+    "&uArr;",
+    "Alt",
+    "Sys",
+    "Ctrl"
+  ],
+  [
+    {
+      "a": 4,
+      "d": true
+    },
+    "\nLower"
+  ],
+  [
+    {
+      "a": 7
+    },
+    "F13",
+    "F14",
+    "F15",
+    "F16",
+    "F17",
+    "F18",
+    "F19",
+    "F20",
+    "F21",
+    "F22",
+    "F23",
+    "F24"
+  ],
+  [
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "F5",
+    "F6",
+    "F7",
+    "F8",
+    "F9",
+    "F10",
+    "F11",
+    "F12"
+  ],
+  [
+    "Back Space",
+    "Undo",
+    "Cut",
+    "Copy",
+    {
+      "n": true
+    },
+    "Paste",
+    "Esc",
+    "Page Up",
+    {
+      "n": true
+    },
+    "Home",
+    "Up",
+    "End",
+    "Insert",
+    "Delete"
+  ],
+  [
+    "Shift",
+    "",
+    "",
+    "",
+    "Play Pause",
+    "F13",
+    "Page Down",
+    "Left",
+    "Down",
+    "Right",
+    "Print Scr",
+    "Shift"
+  ],
+  [
+    "Ctrl",
+    "Sys",
+    "Alt",
+    "&dArr;",
+    "AltGr",
+    "Space",
+    "Enter",
+    "AltGr",
+    "",
+    "Alt",
+    "Sys",
+    "Ctrl"
+  ],
+  [
+    {
+      "a": 4,
+      "d": true
+    },
+    "\nRaise"
+  ],
+  [
+    {
+      "a": 7
+    },
+    "Esc",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "F13"
+  ],
+  [
+    "Tab",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "7",
+    "8",
+    "9",
+    "",
+    "Comp ose"
+  ],
+  [
+    "Back Space",
+    "",
+    "",
+    "",
+    {
+      "n": true
+    },
+    "",
+    "",
+    "",
+    {
+      "n": true
+    },
+    "4",
+    "5",
+    "6",
+    "",
+    "Delete"
+  ],
+  [
+    "Shift",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "0",
+    "1",
+    "2",
+    "3",
+    "",
+    "Shift"
+  ],
+  [
+    "Ctrl",
+    "Sys",
+    "Alt",
+    "",
+    "AltGr",
+    "Space",
+    "Enter",
+    "AltGr",
+    "&uArr;",
+    "Alt",
+    "Sys",
+    "Ctrl"
+  ]
+]
