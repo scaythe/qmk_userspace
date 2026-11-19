@@ -20,6 +20,10 @@
 // when the one-shot modifier is released before the tapping term
 #define PERMISSIVE_HOLD
 
+// Delay in milliseconds after which a tapped one-shot key is released if no
+// other key is pressed
+#define ONESHOT_TIMEOUT 5000
+
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(PREONIC_SOUND)
 #endif

@@ -10,6 +10,8 @@ contains this layout. To install it on Linux, copy that folder to
 
 Lower, Raise, AltGr and Shift are one-shot keys. A tap applies the layer or the
 modifier to the next key only, and holding the key applies it until its release.
+If you tap a one-shot key and press no other key, it is released after the
+delay set by `ONESHOT_TIMEOUT` in `config.h`.
 On the layers for a host with a standard QWERTY or AZERTY layout, Shift is a
 regular key. Holding Lower and Raise activates the Adjust layer.
 
