@@ -16,6 +16,10 @@
 
 #pragma once
 
+// Every key tapped while a one-shot modifier is held gets the modifier, even
+// when the one-shot modifier is released before the tapping term
+#define PERMISSIVE_HOLD
+
 #ifdef AUDIO_ENABLE
 #    define STARTUP_SONG SONG(PREONIC_SOUND)
 #endif
