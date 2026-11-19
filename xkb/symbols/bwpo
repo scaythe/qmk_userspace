@@ -18,9 +18,7 @@
 // ┗━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┻━━━━━┛
 
 // unused
-// TLDE, AE11 (-), AE12 (=)
-// AD11 ([), AD12 (])
-// AC11 ('), BKSL
+// TLDE
 
 
 default xkb_symbols "preonic" {
@@ -30,6 +28,15 @@ default xkb_symbols "preonic" {
     include "bwpo(common)"
 
     name[Group1]="bwpo (preonic)";
+
+    // Accented letters on US keys that the grid lacks
+    key <AE11> { [ acircumflex, Acircumflex ] };
+    key <AE12> { [ ucircumflex, Ucircumflex ] };
+    key <AD11> { [ icircumflex, Icircumflex ] };
+    key <AD12> { [ ecircumflex, Ecircumflex ] };
+    key <BKSL> { [ ocircumflex, Ocircumflex ] };
+    // Same key as ù on AZERTY
+    key <AC11> { [ ugrave, Ugrave ] };
 };
 
 // bwpo full
