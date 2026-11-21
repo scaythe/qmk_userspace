@@ -10,9 +10,24 @@ in the Raw data tab of
 
 ## Flashing
 
-No task of this repository flashes the ID75. Its bootloader is `atmel-dfu`,
-which `dfu-programmer` flashes. The `qmk` distrobox container only provides
-`dfu-util`.
+`mise run flash:id75` shows the commit and the date of the latest GitHub release
+of this repository, and asks for confirmation. It then downloads the firmware
+from this release, waits until the ID75 is in bootloader mode, and flashes it.
+
+With `--local`, `mise run flash:id75` flashes the locally compiled firmware,
+`idobao_id75_v2_bwpo.hex` at the root of the repository, instead of the release.
+The task shows the modification date of this file before it asks for
+confirmation.
+
+With `--yes` or `-y`, `mise run flash:id75` flashes without asking for
+confirmation.
+
+The ID75 has an `atmel-dfu` bootloader. The task flashes the ID75 with the
+`dfu-programmer` of the `ghcr.io/qmk/qmk_cli` container image. Without
+`--local`, the task also needs `gh` authenticated on GitHub. mise installs `gh`,
+and the `nu` that runs the task, from the `[tools]` section of `mise.toml`. To
+flash without root, the host needs the udev rules of the `udev` folder at the
+root of this repository.
 
 To put the ID75 in bootloader mode, tap Lower, then hold the Adjust key and
 press the key at the position of B. Holding Esc while plugging the keyboard in

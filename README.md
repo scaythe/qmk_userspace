@@ -47,6 +47,10 @@ podman is missing:
   repository. It uses the `qmk_firmware` clone next to this repository, and
   clones it with its submodules if it is missing. It shows the commit of this
   clone, and does not update it
+- `mise run flash:id75` flashes the ID75 with the firmware of the latest GitHub
+  release. With `--local`, it flashes the firmware compiled locally. The
+  [readme of the ID75 keymap](keyboards/idobao/id75/keymaps/bwpo/readme.md#flashing)
+  describes this task
 - `mise run flash:preonic` flashes the Preonic with the firmware of the latest
   GitHub release. With `--local`, it flashes the firmware compiled locally. The
   [readme of the Preonic keymap](keyboards/preonic/keymaps/bwpo/readme.md#flashing)
