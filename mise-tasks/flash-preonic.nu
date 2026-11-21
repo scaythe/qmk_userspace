@@ -9,7 +9,7 @@ const dfu_alt_setting = 0
 const flash_start_address = "0x8000000"
 
 def main [
-  --local # Flash the firmware that qmk compile copied to the root of the repository
+  --local # Flash the firmware that mise run compile copied to the root of the repository
 ] {
   if $local {
     flash-local-firmware
@@ -21,7 +21,7 @@ def main [
 def flash-local-firmware [] {
   let path = $env.PWD | path join $firmware
   if not ($path | path exists) {
-    error make {msg: $"($firmware) is missing at the root of the repository: compile the firmware first"}
+    error make {msg: $"($firmware) is missing at the root of the repository: run mise run compile first"}
   }
   print-local-firmware $path
   confirm-flash

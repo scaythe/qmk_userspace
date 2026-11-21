@@ -8,7 +8,7 @@ A BÉPO-based layout for a 5×12 ortholinear grid, with direct access to the dig
 
 `mise run flash-preonic` shows the commit and the date of the latest GitHub release of this repository, and asks for confirmation. It then downloads the firmware from this release, waits a few seconds so that you can put the Preonic in bootloader mode, and flashes it.
 
-With `--local`, `mise run flash-preonic` flashes `preonic_rev3_bwpo.bin` instead. `qmk compile` copies this file to the root of the repository. The task shows the modification date of this file before it asks for confirmation.
+With `--local`, `mise run flash-preonic` flashes the locally compiled firmware, `preonic_rev3_bwpo.bin` at the root of the repository, instead of the release. The task shows the modification date of this file before it asks for confirmation.
 
 The task flashes with the `dfu-util` of the distrobox container `qmk`. If this container does not exist, the task creates it from `distrobox.ini` at the root of this repository. Without `--local`, the task also needs `gh` authenticated on GitHub. mise installs `gh`, and the `nu` that runs the task, from the `[tools]` section of `mise.toml`.
 
