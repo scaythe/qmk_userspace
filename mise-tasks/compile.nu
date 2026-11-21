@@ -1,7 +1,8 @@
 #!/usr/bin/env nu
 #MISE description="Compile the firmware of the build targets of qmk.json in the QMK CLI container"
 
-const image = "ghcr.io/qmk/qmk_cli"
+use lib/container.nu [run-qmk-container]
+
 const qmk_firmware_url = "https://github.com/qmk/qmk_firmware.git"
 
 def main [] {
@@ -21,12 +22,16 @@ def print-qmk-firmware-commit [path: string] {
 }
 
 # The :z option relabels the mounted folders so that SELinux lets the container
-# read and write them
+# read and write them. QMK_HOME and QMK_USERSPACE locate the folders without a
+# QMK configuration file, which the container could not write as a user other
+# than root.
 def compile [qmk_firmware: string] {
-  (^podman run --rm
+  let options = [
     --volume $"($qmk_firmware):/qmk_firmware:z"
     --volume $"($env.PWD):/qmk_userspace:z"
+    --env QMK_HOME=/qmk_firmware
+    --env QMK_USERSPACE=/qmk_userspace
     --workdir /qmk_userspace
-    $image
-    sh -c "qmk config user.qmk_home=/qmk_firmware user.overlay_dir=/qmk_userspace > /dev/null && qmk userspace-compile")
+  ]
+  run-qmk-container $options [qmk userspace-compile]
 }
