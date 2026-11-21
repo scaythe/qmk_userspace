@@ -6,6 +6,7 @@ on:
     paths-ignore:
       - 'xkb/**'
       - 'xorg/**'
+      - 'udev/**'
       - '**.md'
       - '**.kle.json'
       - 'mise.toml'

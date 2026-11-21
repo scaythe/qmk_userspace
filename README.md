@@ -17,6 +17,9 @@ which QMK compiles together with a separate clone of
   the keymaps describe how to install it
 - `xorg` holds the X configuration of the bwpo keyboards. The comments of
   `50-bwpo-keyboards.conf` describe how to install it
+- `udev` holds the udev rules that give access to the bootloaders of the bwpo
+  keyboards. The comments of `50-bwpo-keyboards.rules` describe how to install
+  it
 - `qmk.json` lists the build targets, each made of a keyboard and a keymap
 
 ## Build with GitHub

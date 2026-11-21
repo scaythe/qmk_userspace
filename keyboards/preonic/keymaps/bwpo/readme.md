@@ -25,7 +25,8 @@ confirmation.
 The task flashes the Preonic with the `dfu-util` of the `ghcr.io/qmk/qmk_cli`
 container image. Without `--local`, the task also needs `gh` authenticated on
 GitHub. mise installs `gh`, and the `nu` that runs the task, from the `[tools]`
-section of `mise.toml`.
+section of `mise.toml`. To flash without root, the host needs the udev rules of
+the `udev` folder at the root of this repository.
 
 ## Host keyboard layout
 
