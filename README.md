@@ -43,7 +43,7 @@ Alternatively, if you configured your build targets above, you can use `qmk user
 
 `mise.toml` and the `mise-tasks` folder define tasks that mise runs with the tools of the `[tools]` section of `mise.toml`:
 
-- `mise run flash-preonic` flashes the Preonic with the firmware of the latest GitHub release. The [readme of the Preonic keymap](keyboards/preonic/keymaps/bwpo/readme.md#flashing) describes this task
+- `mise run flash-preonic` flashes the Preonic with the firmware of the latest GitHub release. With `--local`, it flashes the firmware compiled locally. The [readme of the Preonic keymap](keyboards/preonic/keymaps/bwpo/readme.md#flashing) describes this task
 - `mise run lint` checks that the Nushell scripts of the tasks parse
 
 ## Formatting
