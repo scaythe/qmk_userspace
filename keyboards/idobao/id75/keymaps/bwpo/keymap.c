@@ -19,7 +19,6 @@ enum id75_layers {
     _QWERTY,
     _Q_SYMB,
     _BWPO_FOR_AZERTY,
-    _BFA_SFT,
     _BFA_SYMB,
     _BWPO_FOR_CUSTOM,
     _BFC_SYMB,
@@ -98,32 +97,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `--------------------------------------------------------------------------------------------------------'
  */
 [_BWPO_FOR_AZERTY] = LAYOUT_ortho_5x15(
-  _______,                S(KC_1), S(KC_2), S(KC_3), S(KC_4),        S(KC_5), _______, _______, _______, S(KC_6), S(KC_7),        S(KC_8), S(KC_9), S(KC_0), KC_F13,
-  _______,                KC_B,    KC_Z,    KC_P,    KC_O,           KC_W,    _______, _______, _______, KC_SCLN, KC_V,           KC_D,    KC_L,    KC_J,    _______,
-  _______,                KC_Q,    KC_U,    KC_I,    KC_E,           KC_M,    _______, _______, _______, KC_C,    KC_T,           KC_S,    KC_R,    KC_N,    _______,
-  LM(_BFA_SFT, MOD_LSFT), KC_3,    KC_Y,    KC_X,    S(KC_COMM),     KC_K,    _______, _______, _______, KC_4,    KC_A,           KC_G,    KC_H,    KC_F,    LM(_BFA_SFT, MOD_LSFT),
-  _______,                _______, _______, _______, OSL(_BFA_SYMB), _______, _______, _______, _______, _______, OSL(_BFA_SYMB), _______, _______, _______, _______
-),
-
-/* bwpo for azerty shifted
- * ,--------------------------------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      | >;<  |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
- * |      | >!<  |      |      | >:<  |      |      |      |      |  ?   |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |      |      |      |
- * `--------------------------------------------------------------------------------------------------------'
- */
-[_BFA_SFT] = LAYOUT_ortho_5x15(
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, KC_COMM, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, KC_SLSH, _______, _______, KC_DOT,  _______, _______, _______, _______, S(KC_M), _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+  _______, S(KC_1), S(KC_2), S(KC_3), S(KC_4),        S(KC_5), _______, _______, _______, S(KC_6), S(KC_7),        S(KC_8), S(KC_9), S(KC_0), KC_F13,
+  _______, KC_B,    KC_Z,    KC_P,    KC_O,           KC_W,    _______, _______, _______, KC_SCLN, KC_V,           KC_D,    KC_L,    KC_J,    _______,
+  _______, KC_Q,    KC_U,    KC_I,    KC_E,           KC_M,    _______, _______, _______, KC_C,    KC_T,           KC_S,    KC_R,    KC_N,    _______,
+  _______, KC_3,    KC_Y,    KC_X,    S(KC_COMM),     KC_K,    _______, _______, _______, KC_4,    KC_A,           KC_G,    KC_H,    KC_F,    _______,
+  _______, _______, _______, _______, OSL(_BFA_SYMB), _______, _______, _______, _______, _______, OSL(_BFA_SYMB), _______, _______, _______, _______
 ),
 
 /* bwpo for azerty symbols
@@ -234,3 +212,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 )
 };
 // clang-format on
+
+// The BWPO A layer sends the AZERTY keycodes of the bwpo characters. With Shift,
+// the `,`, `"`, `.` and `'` keys send the AZERTY keycodes of `;`, `!`, `:` and
+// `?`, which bwpo puts on their shifted position.
+#define BFA_SHIFT_OVERRIDE(key, replacement) ko_make_with_layers(MOD_MASK_SHIFT, key, replacement, 1 << _BWPO_FOR_AZERTY)
+
+const key_override_t bfa_semicolon_override   = BFA_SHIFT_OVERRIDE(KC_M, KC_COMM);
+const key_override_t bfa_exclamation_override = BFA_SHIFT_OVERRIDE(KC_3, KC_SLSH);
+const key_override_t bfa_colon_override       = BFA_SHIFT_OVERRIDE(S(KC_COMM), KC_DOT);
+const key_override_t bfa_question_override    = BFA_SHIFT_OVERRIDE(KC_4, S(KC_M));
+
+const key_override_t *key_overrides[] = {
+    &bfa_semicolon_override,
+    &bfa_exclamation_override,
+    &bfa_colon_override,
+    &bfa_question_override,
+};

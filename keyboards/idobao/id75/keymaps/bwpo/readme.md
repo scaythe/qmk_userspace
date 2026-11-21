@@ -33,4 +33,4 @@ The Lock key sends Super+End. The desktop must bind this shortcut to locking the
 
 Lower and the Symbol keys are one-shot layer keys. The [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#layer-keys) describes how they work.
 
-Shift is a one-shot modifier. A tap applies it to the next key only, and holding it applies it until its release. If you tap Shift and press no other key, it is released after the delay set by `ONESHOT_TIMEOUT` in `config.h`. The [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#one-shot-modifiers) describes how a tap on Shift cancels it while it is pending. On the BWPO A layer, Shift is a regular key.
+Shift is a one-shot modifier. A tap applies it to the next key only, and holding it applies it until its release. If you tap Shift and press no other key, it is released after the delay set by `ONESHOT_TIMEOUT` in `config.h`. The [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#one-shot-modifiers) describes how a tap on Shift cancels it while it is pending.
