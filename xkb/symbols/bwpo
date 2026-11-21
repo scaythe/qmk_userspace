@@ -1,3 +1,7 @@
+// F13 to F24 stay function keys only with the xkb option fkeys:basic_13-24.
+// The xkb rules apply inet(evdev) after this layout, and inet(evdev) maps these
+// keys to launcher, microphone and touchpad keys.
+
 // bwpo ortho
 //
 // ┏━━━━━┱─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━┓

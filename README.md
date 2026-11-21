@@ -15,6 +15,8 @@ which QMK compiles together with a separate clone of
   named `bwpo`
 - `xkb` holds the `bwpo(ortho)` keyboard layout for Linux hosts. The readmes of
   the keymaps describe how to install it
+- `xorg` holds the X configuration of the bwpo keyboards. The comments of
+  `50-bwpo-keyboards.conf` describe how to install it
 - `qmk.json` lists the build targets, each made of a keyboard and a keymap
 
 ## Build with GitHub

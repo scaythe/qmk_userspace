@@ -2,10 +2,10 @@ name: Build QMK firmware
 
 on:
   push:
-    # The xkb layout, the documentation, the KLE diagrams, the mise tasks, the
-    # distrobox manifest and the formatting settings do not change the firmware
+    # Files that do not change the firmware
     paths-ignore:
       - 'xkb/**'
+      - 'xorg/**'
       - '**.md'
       - '**.kle.json'
       - 'mise.toml'
