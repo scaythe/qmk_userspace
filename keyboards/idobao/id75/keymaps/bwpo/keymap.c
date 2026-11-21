@@ -16,15 +16,15 @@
 #include QMK_KEYBOARD_H
 
 enum id75_layers {
-  _QWERTY,
-  _Q_SYMB,
-  _BWPO_FOR_AZERTY,
-  _BFA_SFT,
-  _BFA_SYMB,
-  _BWPO_FOR_CUSTOM,
-  _BFC_SYMB,
-  _LOWER,
-  _ADJUST
+    _QWERTY,
+    _Q_SYMB,
+    _BWPO_FOR_AZERTY,
+    _BFA_SFT,
+    _BFA_SYMB,
+    _BWPO_FOR_CUSTOM,
+    _BFC_SYMB,
+    _LOWER,
+    _ADJUST,
 };
 
 #define LOWER OSL(_LOWER)
@@ -39,6 +39,7 @@ enum id75_layers {
 
 #define LOCK_SCREEN LGUI(KC_END)
 
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* qwerty
@@ -232,3 +233,4 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 )
 };
+// clang-format on

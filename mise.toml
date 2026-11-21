@@ -1,4 +1,6 @@
 [tools]
+clang-format = "latest"
+dprint = "latest"
 gh = "latest"
 nu = "0.117.0"
 

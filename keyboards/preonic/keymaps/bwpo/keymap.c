@@ -17,16 +17,16 @@
 #include QMK_KEYBOARD_H
 
 enum preonic_layers {
-  _QWERTY,
-  _Q_SYMB,
-  _BWPO_FOR_AZERTY,
-  _BFA_SFT,
-  _BFA_SYMB,
-  _BWPO_FOR_CUSTOM,
-  _BFC_SYMB,
-  _LOWER,
-  _RAISE,
-  _ADJUST
+    _QWERTY,
+    _Q_SYMB,
+    _BWPO_FOR_AZERTY,
+    _BFA_SFT,
+    _BFA_SYMB,
+    _BWPO_FOR_CUSTOM,
+    _BFC_SYMB,
+    _LOWER,
+    _RAISE,
+    _ADJUST,
 };
 
 // Holding Lower then Raise, or Raise then Lower, activates the Adjust layer.
@@ -41,6 +41,7 @@ enum preonic_layers {
 #define BWPO_FA TO(_BWPO_FOR_AZERTY)
 #define BWPO_FC TO(_BWPO_FOR_CUSTOM)
 
+// clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* qwerty
@@ -255,52 +256,53 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  \
 )
 };
+// clang-format on
 
 #ifdef AUDIO_ENABLE
 // Plays a short sound when a Lower, Raise, Adjust or symbol layer, or a one-shot
 // modifier, is activated or released
 
-#define LAYER_BIT(layer) ((layer_state_t)1 << (layer))
-#define SYMBOL_LAYERS (LAYER_BIT(_Q_SYMB) | LAYER_BIT(_BFA_SYMB) | LAYER_BIT(_BFC_SYMB))
-#define SIGNALED_LAYERS (LAYER_BIT(_LOWER) | LAYER_BIT(_RAISE) | LAYER_BIT(_ADJUST) | SYMBOL_LAYERS)
+#    define LAYER_BIT(layer) ((layer_state_t)1 << (layer))
+#    define SYMBOL_LAYERS (LAYER_BIT(_Q_SYMB) | LAYER_BIT(_BFA_SYMB) | LAYER_BIT(_BFC_SYMB))
+#    define SIGNALED_LAYERS (LAYER_BIT(_LOWER) | LAYER_BIT(_RAISE) | LAYER_BIT(_ADJUST) | SYMBOL_LAYERS)
 
-static float adjust_on_song[][2] = SONG(S__NOTE(_C6));
-static float raise_on_song[][2] = SONG(S__NOTE(_G5));
-static float symbols_on_song[][2] = SONG(S__NOTE(_E5));
-static float lower_on_song[][2] = SONG(S__NOTE(_C5));
-static float layer_off_song[][2] = SONG(S__NOTE(_C4));
-static float oneshot_mods_on_song[][2] = SONG(S__NOTE(_A5), S__NOTE(_A5));
+static float adjust_on_song[][2]        = SONG(S__NOTE(_C6));
+static float raise_on_song[][2]         = SONG(S__NOTE(_G5));
+static float symbols_on_song[][2]       = SONG(S__NOTE(_E5));
+static float lower_on_song[][2]         = SONG(S__NOTE(_C5));
+static float layer_off_song[][2]        = SONG(S__NOTE(_C4));
+static float oneshot_mods_on_song[][2]  = SONG(S__NOTE(_A5), S__NOTE(_A5));
 static float oneshot_mods_off_song[][2] = SONG(S__NOTE(_A4));
 
 static bool layers_turned_on(layer_state_t before, layer_state_t after, layer_state_t layers);
 static bool layers_turned_off(layer_state_t before, layer_state_t after, layer_state_t layers);
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  if (layers_turned_on(layer_state, state, LAYER_BIT(_ADJUST)))
-    PLAY_SONG(adjust_on_song);
-  else if (layers_turned_on(layer_state, state, LAYER_BIT(_RAISE)))
-    PLAY_SONG(raise_on_song);
-  else if (layers_turned_on(layer_state, state, LAYER_BIT(_LOWER)))
-    PLAY_SONG(lower_on_song);
-  else if (layers_turned_on(layer_state, state, SYMBOL_LAYERS))
-    PLAY_SONG(symbols_on_song);
-  else if (layers_turned_off(layer_state, state, SIGNALED_LAYERS))
-    PLAY_SONG(layer_off_song);
-  return state;
+    if (layers_turned_on(layer_state, state, LAYER_BIT(_ADJUST)))
+        PLAY_SONG(adjust_on_song);
+    else if (layers_turned_on(layer_state, state, LAYER_BIT(_RAISE)))
+        PLAY_SONG(raise_on_song);
+    else if (layers_turned_on(layer_state, state, LAYER_BIT(_LOWER)))
+        PLAY_SONG(lower_on_song);
+    else if (layers_turned_on(layer_state, state, SYMBOL_LAYERS))
+        PLAY_SONG(symbols_on_song);
+    else if (layers_turned_off(layer_state, state, SIGNALED_LAYERS))
+        PLAY_SONG(layer_off_song);
+    return state;
 }
 
 void oneshot_mods_changed_user(uint8_t mods) {
-  if (mods)
-    PLAY_SONG(oneshot_mods_on_song);
-  else
-    PLAY_SONG(oneshot_mods_off_song);
+    if (mods)
+        PLAY_SONG(oneshot_mods_on_song);
+    else
+        PLAY_SONG(oneshot_mods_off_song);
 }
 
 static bool layers_turned_on(layer_state_t before, layer_state_t after, layer_state_t layers) {
-  return (~before & after & layers) != 0;
+    return (~before & after & layers) != 0;
 }
 
 static bool layers_turned_off(layer_state_t before, layer_state_t after, layer_state_t layers) {
-  return (before & ~after & layers) != 0;
+    return (before & ~after & layers) != 0;
 }
 #endif

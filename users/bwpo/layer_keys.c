@@ -27,20 +27,20 @@
 #define MAX_LAYER_KEYS 8
 
 typedef struct {
-  keypos_t position;
-  uint8_t layer;
-  // A tap on an OSL key leaves its layer pending, a tap on an MO key does not
-  bool taps_to_pending;
-  // Released after a tap, its layer applies to the next key only
-  bool pending;
-  bool other_key_pressed;
-  // Pressed while its layer was pending
-  bool cancels_on_tap;
+    keypos_t position;
+    uint8_t  layer;
+    // A tap on an OSL key leaves its layer pending, a tap on an MO key does not
+    bool taps_to_pending;
+    // Released after a tap, its layer applies to the next key only
+    bool pending;
+    bool other_key_pressed;
+    // Pressed while its layer was pending
+    bool cancels_on_tap;
 } layer_key_t;
 
 // From the oldest pressed to the last pressed
 static layer_key_t layer_keys[MAX_LAYER_KEYS];
-static uint8_t layer_key_count = 0;
+static uint8_t     layer_key_count = 0;
 
 // Layers that the layer keys turned on
 static layer_state_t applied_layers = 0;
@@ -52,197 +52,182 @@ static uint16_t pending_since;
 #ifdef PENDING_LAYER_TIMES_OUT
 static bool has_pending_layer_key(void);
 #endif
-static bool is_layer_key(uint16_t keycode);
-static bool is_modifier_key(uint16_t keycode);
-static bool process_other_key(uint16_t keycode, keyrecord_t *record);
-static void press_layer_key(uint16_t keycode, keypos_t position);
-static uint8_t get_key_layer(uint16_t keycode);
-static void release_layer_key(keypos_t position);
-static void leave_layer_pending(layer_key_t *key);
-static bool is_pending_layer(uint8_t layer);
-static void mark_other_key_pressed(void);
-static void remove_pending_layer_key(void);
-static void add_layer_key(layer_key_t key);
-static layer_key_t *find_held_layer_key(keypos_t position);
-static bool leaves_layer_pending(const layer_key_t *key);
-static bool is_layer_held_by_another_key(const layer_key_t *key);
-static void remove_layer_key(const layer_key_t *key);
-static void forget_layer_keys(void);
-static void apply_layer_keys(void);
+static bool          is_layer_key(uint16_t keycode);
+static bool          is_modifier_key(uint16_t keycode);
+static bool          process_other_key(uint16_t keycode, keyrecord_t *record);
+static void          press_layer_key(uint16_t keycode, keypos_t position);
+static uint8_t       get_key_layer(uint16_t keycode);
+static void          release_layer_key(keypos_t position);
+static void          leave_layer_pending(layer_key_t *key);
+static bool          is_pending_layer(uint8_t layer);
+static void          mark_other_key_pressed(void);
+static void          remove_pending_layer_key(void);
+static void          add_layer_key(layer_key_t key);
+static layer_key_t  *find_held_layer_key(keypos_t position);
+static bool          leaves_layer_pending(const layer_key_t *key);
+static bool          is_layer_held_by_another_key(const layer_key_t *key);
+static void          remove_layer_key(const layer_key_t *key);
+static void          forget_layer_keys(void);
+static void          apply_layer_keys(void);
 static layer_state_t get_layer_keys_state(void);
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!is_layer_key(keycode))
-    return process_other_key(keycode, record);
-  if (record->event.pressed)
-    press_layer_key(keycode, record->event.key);
-  else
-    release_layer_key(record->event.key);
-  return false;
+    if (!is_layer_key(keycode)) return process_other_key(keycode, record);
+    if (record->event.pressed)
+        press_layer_key(keycode, record->event.key);
+    else
+        release_layer_key(record->event.key);
+    return false;
 }
 
 // The pending layer applies to the key that QMK has just processed, and ends
 // after it, unless that key is a modifier
 void post_process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!record->event.pressed || is_layer_key(keycode) || is_modifier_key(keycode))
-    return;
-  remove_pending_layer_key();
-  apply_layer_keys();
+    if (!record->event.pressed || is_layer_key(keycode) || is_modifier_key(keycode)) return;
+    remove_pending_layer_key();
+    apply_layer_keys();
 }
 
 #ifdef PENDING_LAYER_TIMES_OUT
 void housekeeping_task_user(void) {
-  if (!has_pending_layer_key() || timer_elapsed(pending_since) < ONESHOT_TIMEOUT)
-    return;
-  remove_pending_layer_key();
-  apply_layer_keys();
+    if (!has_pending_layer_key() || timer_elapsed(pending_since) < ONESHOT_TIMEOUT) return;
+    remove_pending_layer_key();
+    apply_layer_keys();
 }
 
 static bool has_pending_layer_key(void) {
-  for (uint8_t i = 0; i < layer_key_count; i++)
-    if (layer_keys[i].pending)
-      return true;
-  return false;
+    for (uint8_t i = 0; i < layer_key_count; i++)
+        if (layer_keys[i].pending) return true;
+    return false;
 }
 #endif
 
 static bool is_layer_key(uint16_t keycode) {
-  return IS_QK_ONE_SHOT_LAYER(keycode) || IS_QK_MOMENTARY(keycode);
+    return IS_QK_ONE_SHOT_LAYER(keycode) || IS_QK_MOMENTARY(keycode);
 }
 
 static bool is_modifier_key(uint16_t keycode) {
-  return IS_MODIFIER_KEYCODE(keycode) || IS_QK_ONE_SHOT_MOD(keycode) || IS_QK_LAYER_MOD(keycode);
+    return IS_MODIFIER_KEYCODE(keycode) || IS_QK_ONE_SHOT_MOD(keycode) || IS_QK_LAYER_MOD(keycode);
 }
 
 // A TO key turns off every layer, those of the layer keys included
 static bool process_other_key(uint16_t keycode, keyrecord_t *record) {
-  if (!record->event.pressed)
+    if (!record->event.pressed) return true;
+    mark_other_key_pressed();
+    if (IS_QK_TO(keycode)) forget_layer_keys();
     return true;
-  mark_other_key_pressed();
-  if (IS_QK_TO(keycode))
-    forget_layer_keys();
-  return true;
 }
 
 static void press_layer_key(uint16_t keycode, keypos_t position) {
-  uint8_t     layer = get_key_layer(keycode);
-  layer_key_t key   = {
-      .position        = position,
-      .layer           = layer,
-      .taps_to_pending = IS_QK_ONE_SHOT_LAYER(keycode),
-      .cancels_on_tap  = is_pending_layer(layer),
-  };
-  mark_other_key_pressed();
-  remove_pending_layer_key();
-  add_layer_key(key);
-  apply_layer_keys();
+    uint8_t     layer = get_key_layer(keycode);
+    layer_key_t key   = {
+        .position        = position,
+        .layer           = layer,
+        .taps_to_pending = IS_QK_ONE_SHOT_LAYER(keycode),
+        .cancels_on_tap  = is_pending_layer(layer),
+    };
+    mark_other_key_pressed();
+    remove_pending_layer_key();
+    add_layer_key(key);
+    apply_layer_keys();
 }
 
 static uint8_t get_key_layer(uint16_t keycode) {
-  if (IS_QK_ONE_SHOT_LAYER(keycode))
-    return QK_ONE_SHOT_LAYER_GET_LAYER(keycode);
-  return QK_MOMENTARY_GET_LAYER(keycode);
+    if (IS_QK_ONE_SHOT_LAYER(keycode)) return QK_ONE_SHOT_LAYER_GET_LAYER(keycode);
+    return QK_MOMENTARY_GET_LAYER(keycode);
 }
 
 static void release_layer_key(keypos_t position) {
-  layer_key_t *key = find_held_layer_key(position);
-  if (key == NULL)
-    return;
-  if (leaves_layer_pending(key))
-    leave_layer_pending(key);
-  else
-    remove_layer_key(key);
-  apply_layer_keys();
+    layer_key_t *key = find_held_layer_key(position);
+    if (key == NULL) return;
+    if (leaves_layer_pending(key))
+        leave_layer_pending(key);
+    else
+        remove_layer_key(key);
+    apply_layer_keys();
 }
 
 static void leave_layer_pending(layer_key_t *key) {
-  key->pending = true;
+    key->pending = true;
 #ifdef PENDING_LAYER_TIMES_OUT
-  pending_since = timer_read();
+    pending_since = timer_read();
 #endif
 }
 
 static bool is_pending_layer(uint8_t layer) {
-  for (uint8_t i = 0; i < layer_key_count; i++)
-    if (layer_keys[i].pending && layer_keys[i].layer == layer)
-      return true;
-  return false;
+    for (uint8_t i = 0; i < layer_key_count; i++)
+        if (layer_keys[i].pending && layer_keys[i].layer == layer) return true;
+    return false;
 }
 
 static void mark_other_key_pressed(void) {
-  for (uint8_t i = 0; i < layer_key_count; i++)
-    layer_keys[i].other_key_pressed = true;
+    for (uint8_t i = 0; i < layer_key_count; i++)
+        layer_keys[i].other_key_pressed = true;
 }
 
 static void remove_pending_layer_key(void) {
-  for (uint8_t i = layer_key_count; i > 0; i--)
-    if (layer_keys[i - 1].pending)
-      remove_layer_key(&layer_keys[i - 1]);
+    for (uint8_t i = layer_key_count; i > 0; i--)
+        if (layer_keys[i - 1].pending) remove_layer_key(&layer_keys[i - 1]);
 }
 
 // When MAX_LAYER_KEYS layer keys are already held or pending, the key does
 // nothing
 static void add_layer_key(layer_key_t key) {
-  if (layer_key_count == MAX_LAYER_KEYS)
-    return;
-  layer_keys[layer_key_count++] = key;
+    if (layer_key_count == MAX_LAYER_KEYS) return;
+    layer_keys[layer_key_count++] = key;
 }
 
 static layer_key_t *find_held_layer_key(keypos_t position) {
-  for (uint8_t i = 0; i < layer_key_count; i++)
-    if (!layer_keys[i].pending && KEYEQ(layer_keys[i].position, position))
-      return &layer_keys[i];
-  return NULL;
+    for (uint8_t i = 0; i < layer_key_count; i++)
+        if (!layer_keys[i].pending && KEYEQ(layer_keys[i].position, position)) return &layer_keys[i];
+    return NULL;
 }
 
 // A tap on the key of a pending layer cancels that layer. A tap on a key whose
 // layer another held key applies does nothing.
 static bool leaves_layer_pending(const layer_key_t *key) {
-  return key->taps_to_pending && !key->other_key_pressed && !key->cancels_on_tap && !is_layer_held_by_another_key(key);
+    return key->taps_to_pending && !key->other_key_pressed && !key->cancels_on_tap && !is_layer_held_by_another_key(key);
 }
 
 static bool is_layer_held_by_another_key(const layer_key_t *key) {
-  for (uint8_t i = 0; i < layer_key_count; i++)
-    if (&layer_keys[i] != key && !layer_keys[i].pending && layer_keys[i].layer == key->layer)
-      return true;
-  return false;
+    for (uint8_t i = 0; i < layer_key_count; i++)
+        if (&layer_keys[i] != key && !layer_keys[i].pending && layer_keys[i].layer == key->layer) return true;
+    return false;
 }
 
 static void remove_layer_key(const layer_key_t *key) {
-  uint8_t index = key - layer_keys;
-  for (uint8_t i = index; i + 1 < layer_key_count; i++)
-    layer_keys[i] = layer_keys[i + 1];
-  layer_key_count--;
+    uint8_t index = key - layer_keys;
+    for (uint8_t i = index; i + 1 < layer_key_count; i++)
+        layer_keys[i] = layer_keys[i + 1];
+    layer_key_count--;
 }
 
 static void forget_layer_keys(void) {
-  layer_key_count = 0;
-  applied_layers  = 0;
+    layer_key_count = 0;
+    applied_layers  = 0;
 }
 
 static void apply_layer_keys(void) {
-  layer_state_t layers = get_layer_keys_state();
-  if (layers == applied_layers)
-    return;
-  layer_state_set((layer_state & ~applied_layers) | layers);
-  applied_layers = layers;
+    layer_state_t layers = get_layer_keys_state();
+    if (layers == applied_layers) return;
+    layer_state_set((layer_state & ~applied_layers) | layers);
+    applied_layers = layers;
 }
 
 #ifdef LAST_LAYER_KEY_WINS
 // Only the layer of the last pressed layer key applies, even when the layer of
 // an older key comes after it in the keymap
 static layer_state_t get_layer_keys_state(void) {
-  if (layer_key_count == 0)
-    return 0;
-  return (layer_state_t)1 << layer_keys[layer_key_count - 1].layer;
+    if (layer_key_count == 0) return 0;
+    return (layer_state_t)1 << layer_keys[layer_key_count - 1].layer;
 }
 #else
 // The layers of all the layer keys apply, and QMK gives precedence to the one
 // that comes last in the keymap
 static layer_state_t get_layer_keys_state(void) {
-  layer_state_t layers = 0;
-  for (uint8_t i = 0; i < layer_key_count; i++)
-    layers |= (layer_state_t)1 << layer_keys[i].layer;
-  return layers;
+    layer_state_t layers = 0;
+    for (uint8_t i = 0; i < layer_key_count; i++)
+        layers |= (layer_state_t)1 << layer_keys[i].layer;
+    return layers;
 }
 #endif
