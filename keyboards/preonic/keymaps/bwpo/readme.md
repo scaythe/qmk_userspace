@@ -26,7 +26,6 @@ Keys on the Adjust layer switch to other layers:
 
 - BWPO C, for a host that uses the `bwpo(ortho)` xkb layout. It sends the
   QWERTY keycodes that this xkb layout turns into the bwpo layout
-- BWPO Q produces the bwpo layout on a host that uses a standard QWERTY layout
 - BWPO A produces the bwpo layout on a host that uses a standard AZERTY layout
 - QWERTY switches back to the default layer
 
@@ -55,7 +54,7 @@ layer or the modifier to the next key only, and holding the key applies it until
 its release. If you tap a one-shot key and press no other key, it is released
 after the delay set by `ONESHOT_TIMEOUT` in `config.h`.
 
-On the BWPO Q and BWPO A layers, Shift is a regular key.
+On the BWPO A layer, Shift is a regular key.
 
 ## Sounds
 
