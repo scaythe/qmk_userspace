@@ -27,7 +27,7 @@ The `xkb` folder at the root of this repository contains the `bwpo(ortho)` keybo
 - The two Symbol keys of the thumb row activate a symbol layer. On the default layer, this symbol layer holds the US keys that the grid lacks
 - The Alt key of the right hand sends right Alt, which a keyboard layout with AltGr uses as AltGr
 - Lower activates the function keys, the navigation keys, the editing shortcuts and Play/Pause
-- Raise activates the numeric keypad and the accented letters â, û, î, ê, ô and ù. The accented letters need the `bwpo(ortho)` keyboard layout, except ù, which also works with a standard AZERTY keyboard layout
+- Raise activates the numeric keypad and the accented letters â, û, î, ê, ô and ù. The numeric keypad gives digits only when Num Lock is on, and the Num Lock key is above 7. The accented letters need the `bwpo(ortho)` keyboard layout, except ù, which also works with a standard AZERTY keyboard layout
 - Holding Lower and Raise activates the Adjust layer, which holds the keys for the bootloader, the debug mode, the audio and the layers for the host keyboard layouts
 
 ## One-shot keys

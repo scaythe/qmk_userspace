@@ -194,7 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * The accented letters need the bwpo(ortho) xkb layout, which puts them on
  * US keys that the grid lacks. The ù key also gives ù with an AZERTY layout.
  * ,-----------------------------------------------------------------------------------.
- * | Esc  |      |      |      |      |      |      |      |      |      |      | F13  |
+ * | Esc  |      |      |      |      |      |      |NumLck|      |      |      | F13  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |      |      |      |      |      |   *  |   7  |   8  |   9  |  -   | Caps |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
@@ -206,7 +206,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
-  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F13,  \
+  _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_NUM,  XXXXXXX, XXXXXXX, XXXXXXX, KC_F13,  \
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PAST, KC_KP_7, KC_KP_8, KC_KP_9, KC_PMNS, _______, \
   _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_PSLS, KC_KP_4, KC_KP_5, KC_KP_6, KC_PPLS, _______, \
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, KC_KP_0, KC_KP_1, KC_KP_2, KC_KP_3, KC_PENT, _______, \

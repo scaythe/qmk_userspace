@@ -171,7 +171,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * The accented letters need the bwpo(ortho) xkb layout, which puts them on
  * US keys that the grid lacks. The ù key also gives ù with an AZERTY layout.
  * ,--------------------------------------------------------------------------------------------------------.
- * | F13  | F14  | F15  | F16  | F17  | F18  | XXXX |Adjust| XXXX | F19  | F20  | F21  | F22  | F23  | F24  |
+ * | F13  | F14  | F15  | F16  | F17  | F18  |NumLck|Adjust| XXXX | F19  | F20  | F21  | F22  | F23  | F24  |
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
  * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  7   |  8   |  9   |  F7  |  F8  |  F9  | F10  | F11  | F12  |
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
@@ -183,7 +183,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `--------------------------------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_ortho_5x15(
-  KC_F13,  KC_F14,     KC_F15,     KC_F16,     KC_F17,     KC_F18,  XXXXXXX, ADJUST,  XXXXXXX, KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,
+  KC_F13,  KC_F14,     KC_F15,     KC_F16,     KC_F17,     KC_F18,  KC_NUM,  ADJUST,  XXXXXXX, KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,
   KC_F1,   KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,   KC_KP_7, KC_KP_8, KC_KP_9, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
   _______, KC_MINS,    KC_EQL,     KC_LBRC,    KC_RBRC,    KC_BSLS, KC_KP_4, KC_KP_5, KC_KP_6, KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_F13,  _______,
   _______, LCTL(KC_T), LCTL(KC_C), LCTL(KC_H), LCTL(KC_U), KC_QUOT, KC_KP_1, KC_KP_2, KC_KP_3, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, _______,
