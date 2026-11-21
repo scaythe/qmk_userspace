@@ -21,7 +21,7 @@ installs `gh`, and the `nu` that runs the task, from the `[tools]` section of
 
 ## Host layout
 
-The default layer sends the QWERTY keycodes that the `bwpo(preonic)` xkb layout
+The default layer sends standard QWERTY keycodes that the `bwpo(ortho)` xkb layout
 maps to the bwpo layout. The `xkb` folder at the root of this repository
 contains this layout. To install it on Linux, copy or symlink that folder to
 `~/.config/xkb`.
@@ -35,7 +35,7 @@ host that uses a standard QWERTY or AZERTY layout.
 - Lower activates the function keys, the navigation keys, the editing shortcuts
   and Play/Pause
 - Raise activates the numeric keypad and the accented letters â, û, î, ê, ô and
-  ù. The accented letters need the `bwpo(preonic)` xkb layout, except ù, which
+  ù. The accented letters need the `bwpo(ortho)` xkb layout, except ù, which
   also works on a host with a standard AZERTY layout
 - Holding Lower and Raise activates the Adjust layer, which holds the keys for
   the bootloader, the debug mode, the audio and the host layouts

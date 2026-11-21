@@ -1,4 +1,4 @@
-// bwpo preonic
+// bwpo ortho
 //
 // ┏━━━━━┱─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┲━━━━━┓
 // ┃     ┃     │     │     │     │     │     │     │     │     │     ┃     ┃
@@ -21,13 +21,13 @@
 // TLDE
 
 
-default xkb_symbols "preonic" {
+default xkb_symbols "ortho" {
     include "us"
     include "level3(ralt_switch)"
     include "compose(caps)"
     include "bwpo(common)"
 
-    name[Group1]="bwpo (preonic)";
+    name[Group1]="bwpo (ortho)";
 
     // Accented letters on US keys that the grid lacks
     key <AE11> { [ acircumflex, Acircumflex ] };

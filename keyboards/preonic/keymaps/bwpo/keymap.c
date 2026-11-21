@@ -305,7 +305,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Raise
- * The accented letters need the bwpo(preonic) xkb layout, which puts them on
+ * The accented letters need the bwpo(ortho) xkb layout, which puts them on
  * US keys that the grid lacks. The ù key also gives ù with an AZERTY layout.
  * ,-----------------------------------------------------------------------------------.
  * | Esc  |      |      |      |      |      |      |      |      |      |      | F13  |
