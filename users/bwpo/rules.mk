@@ -1,1 +1,1 @@
-SRC += layer_keys.c
+SRC += bwpo.c layer_keys.c oneshot_mods.c
