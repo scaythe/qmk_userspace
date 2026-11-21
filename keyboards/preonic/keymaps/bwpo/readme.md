@@ -28,8 +28,6 @@ Keys on the Adjust layer switch to other layers:
   QWERTY keycodes that this xkb layout turns into the bwpo layout
 - BWPO Q produces the bwpo layout on a host that uses a standard QWERTY layout
 - BWPO A produces the bwpo layout on a host that uses a standard AZERTY layout
-- QWERTY symb adds to the default layer a symbol layer that holds the US keys
-  that the grid lacks
 - QWERTY switches back to the default layer
 
 The `xkb` folder at the root of this repository contains the `bwpo(ortho)` xkb
@@ -37,8 +35,11 @@ layout. To install it on Linux, copy or symlink that folder to `~/.config/xkb`.
 
 ## Layers
 
-- On the default layer, AltGr is a modifier. On the other layers, AltGr
-  activates a symbol layer
+- The two Symbol keys of the thumb row activate a symbol layer. On the default
+  layer, this symbol layer holds the US keys that the grid lacks. On the Lower
+  and Raise layers, the Symbol keys are AltGr keys
+- The Alt key of the right hand sends right Alt, which a host layout with AltGr
+  uses as AltGr
 - Lower activates the function keys, the navigation keys, the editing shortcuts
   and Play/Pause
 - Raise activates the numeric keypad and the accented letters â, û, î, ê, ô and
@@ -49,10 +50,10 @@ layout. To install it on Linux, copy or symlink that folder to `~/.config/xkb`.
 
 ## One-shot keys
 
-Lower, Raise, AltGr and Shift are one-shot keys. A tap applies the layer or the
-modifier to the next key only, and holding the key applies it until its release.
-If you tap a one-shot key and press no other key, it is released after the delay
-set by `ONESHOT_TIMEOUT` in `config.h`.
+Lower, Raise, the Symbol keys and Shift are one-shot keys. A tap applies the
+layer or the modifier to the next key only, and holding the key applies it until
+its release. If you tap a one-shot key and press no other key, it is released
+after the delay set by `ONESHOT_TIMEOUT` in `config.h`.
 
 On the BWPO Q and BWPO A layers, Shift is a regular key.
 

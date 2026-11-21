@@ -18,7 +18,6 @@
 
 enum preonic_layers {
   _QWERTY,
-  _QWERTY_SYMBOLS,
   _Q_SYMB,
   _BWPO_FOR_QWERTY,
   _BFQ_SFT,
@@ -45,14 +44,13 @@ enum preonic_layers {
 #define O_RALT OSM(MOD_RALT)
 
 #define QWERTY TO(_QWERTY)
-#define QWERTY_S TO(_QWERTY_SYMBOLS)
 #define BWPO_FQ TO(_BWPO_FOR_QWERTY)
 #define BWPO_FA TO(_BWPO_FOR_AZERTY)
 #define BWPO_FC TO(_BWPO_FOR_CUSTOM)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-/* qwerty raw
+/* qwerty
  * ,-----------------------------------------------------------------------------------.
  * |  Esc |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  |  `   |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -62,36 +60,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower | RAlt |Space |Enter | RAlt |Raise | LAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | RAlt | GUI  | Ctrl |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
-  KC_ESC,  KC_1,    KC_2,    KC_3,  KC_4,   KC_5,   KC_6,   KC_7,   KC_8,    KC_9,    KC_0,    KC_GRV,  \
-  KC_TAB,  KC_Q,    KC_W,    KC_E,  KC_R,   KC_T,   KC_Y,   KC_U,   KC_I,    KC_O,    KC_P,    KC_CAPS, \
-  KC_BSPC, KC_A,    KC_S,    KC_D,  KC_F,   KC_G,   KC_H,   KC_J,   KC_K,    KC_L,    KC_SCLN, KC_DEL,  \
-  O_LSFT,  KC_Z,    KC_X,    KC_C,  KC_V,   KC_B,   KC_N,   KC_M,   KC_COMM, KC_DOT,  KC_SLSH, O_RSFT,  \
-  KC_LCTL, KC_LGUI, KC_LALT, LOWER, O_RALT, KC_SPC, KC_ENT, O_RALT, RAISE,   KC_LALT, KC_RGUI, KC_RCTL  \
-),
-
-/* qwerty with symbols layer
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |Symbol|      |      |      |      |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */
-[_QWERTY_SYMBOLS] = LAYOUT_preonic_grid( \
-  _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______, \
-  _______, _______, _______, _______, OSL(_Q_SYMB), _______, _______, _______, _______, _______, _______, _______  \
+  KC_ESC,  KC_1,    KC_2,    KC_3,  KC_4,         KC_5,   KC_6,   KC_7,         KC_8,    KC_9,    KC_0,    KC_GRV,  \
+  KC_TAB,  KC_Q,    KC_W,    KC_E,  KC_R,         KC_T,   KC_Y,   KC_U,         KC_I,    KC_O,    KC_P,    KC_CAPS, \
+  KC_BSPC, KC_A,    KC_S,    KC_D,  KC_F,         KC_G,   KC_H,   KC_J,         KC_K,    KC_L,    KC_SCLN, KC_DEL,  \
+  O_LSFT,  KC_Z,    KC_X,    KC_C,  KC_V,         KC_B,   KC_N,   KC_M,         KC_COMM, KC_DOT,  KC_SLSH, O_RSFT,  \
+  KC_LCTL, KC_LGUI, KC_LALT, LOWER, OSL(_Q_SYMB), KC_SPC, KC_ENT, OSL(_Q_SYMB), RAISE,   KC_RALT, KC_RGUI, KC_RCTL  \
 ),
 
 /* qwerty symbols
@@ -133,7 +110,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,                KC_B,       KC_W,    KC_P,    KC_O,           KC_Z,    KC_M,    KC_V,           KC_D,    KC_L,    KC_J,    _______,                \
   _______,                KC_A,       KC_U,    KC_I,    KC_E,           KC_COMM, KC_C,    KC_T,           KC_S,    KC_R,    KC_N,    _______,                \
   LM(_BFQ_SFT, MOD_LSFT), S(KC_QUOT), KC_Y,    KC_X,    KC_DOT,         KC_K,    KC_QUOT, KC_Q,           KC_G,    KC_H,    KC_F,    LM(_BFQ_SFT, MOD_LSFT), \
-  _______,                _______,    _______, _______, OSL(_BFQ_SYMB), _______, _______, OSL(_BFQ_SYMB), _______, KC_RALT, _______, _______                 \
+  _______,                _______,    _______, _______, OSL(_BFQ_SYMB), _______, _______, OSL(_BFQ_SYMB), _______, _______, _______, _______                 \
 ),
 
 /* bwpo for qwerty shifted
@@ -196,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,                KC_B,    KC_Z,    KC_P,    KC_O,           KC_W,    KC_SCLN, KC_V,           KC_D,    KC_L,    KC_J,    _______,                \
   _______,                KC_Q,    KC_U,    KC_I,    KC_E,           KC_M,    KC_C,    KC_T,           KC_S,    KC_R,    KC_N,    _______,                \
   LM(_BFA_SFT, MOD_LSFT), KC_3,    KC_Y,    KC_X,    S(KC_COMM),     KC_K,    KC_4,    KC_A,           KC_G,    KC_H,    KC_F,    LM(_BFA_SFT, MOD_LSFT), \
-  _______,                _______, _______, _______, OSL(_BFA_SYMB), _______, _______, OSL(_BFA_SYMB), _______, KC_RALT, _______, _______                 \
+  _______,                _______, _______, _______, OSL(_BFA_SYMB), _______, _______, OSL(_BFA_SYMB), _______, _______, _______, _______                 \
 ),
 
 /* bwpo for azerty shifted
@@ -259,7 +236,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______,        _______, _______, _______,        _______, _______, _______, _______, \
   _______, _______, _______, _______, _______,        _______, _______, _______,        _______, _______, _______, _______, \
   _______, _______, _______, _______, _______,        _______, _______, _______,        _______, _______, _______, _______, \
-  _______, _______, _______, _______, OSL(_BFC_SYMB), _______, _______, OSL(_BFC_SYMB), _______, KC_RALT, _______, _______  \
+  _______, _______, _______, _______, OSL(_BFC_SYMB), _______, _______, OSL(_BFC_SYMB), _______, _______, _______, _______  \
 ),
 
 /* bwpo for custom symbols
@@ -333,10 +310,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Boot | Debug| Audio|      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |QWERTY|BWPO Q|BWPO C|      |      |
+ * |      |      |      |      |      |      |      |QWERTY|BWPO A|BWPO C|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |      |      |      |      |      |      |QWERTY|BWPO A|      |      |      |
- * |      |      |      |      |      |      |      | symb |      |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
@@ -345,7 +321,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,    KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
   XXXXXXX, QK_BOOT, DB_TOGG, AU_TOGG, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, KC_DEL,  \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QWERTY,   BWPO_FQ, BWPO_FC, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, QWERTY_S, BWPO_FA, XXXXXXX, XXXXXXX, XXXXXXX, \
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  BWPO_FA, XXXXXXX, XXXXXXX, XXXXXXX, \
   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  \
 )
 };
