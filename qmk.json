@@ -1,6 +1,7 @@
 {
     "userspace_version": "1.0",
     "build_targets": [
-        ["preonic/rev3", "bwpo"]
+        ["preonic/rev3", "bwpo"],
+        ["idobao/id75/v2", "bwpo"]
     ]
 }
