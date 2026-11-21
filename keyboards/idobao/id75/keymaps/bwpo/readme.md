@@ -17,18 +17,21 @@ To put the ID75 in bootloader mode, tap Lower, then hold the Adjust key and
 press the key at the position of B. Holding Esc while plugging the keyboard in
 also puts it in bootloader mode.
 
-## Host layout
+## Host keyboard layout
 
-The default layer is a standard QWERTY layout, for a host with a QWERTY layout.
-Keys on the Adjust layer switch to the layers that produce the bwpo layout:
+The default layer sends the keys of a standard QWERTY keyboard, for a host that
+uses a QWERTY keyboard layout. Keys on the Adjust layer switch to the following
+layers:
 
-- BWPO C, for a host that uses the `bwpo(ortho)` xkb layout. It sends the
-  QWERTY keycodes that this xkb layout turns into the bwpo layout
-- BWPO A, for a host that uses a standard AZERTY layout
-- QWERTY switches back to the default layer
+- QWERTY is the default layer
+- BWPO C is for a host that uses the `bwpo(ortho)` keyboard layout. It sends the
+  QWERTY keycodes that this keyboard layout turns into bwpo
+- BWPO A is for a host that uses a standard AZERTY keyboard layout. It sends the
+  keycodes that this keyboard layout turns into bwpo
 
-The `xkb` folder at the root of this repository contains the `bwpo(ortho)` xkb
-layout. To install it on Linux, copy or symlink that folder to `~/.config/xkb`.
+The `xkb` folder at the root of this repository contains the `bwpo(ortho)`
+keyboard layout. To install it on Linux, copy or symlink that folder to
+`~/.config/xkb`.
 
 The Lock key sends Super+End. The desktop must bind this shortcut to locking
 the session.
@@ -37,15 +40,15 @@ the session.
 
 - The two Symbol keys of the thumb row activate a symbol layer. On the default
   layer, this symbol layer holds the US keys that the grid lacks
-- The Alt key of the right hand sends right Alt, which a host layout with AltGr
-  uses as AltGr
+- The Alt key of the right hand sends right Alt, which a keyboard layout with
+  AltGr uses as AltGr
 - Lower activates the function keys, the numeric keypad, the navigation keys,
   the editing shortcuts and the accented letters â, û, î, ê, ô and ù. The
   numeric keypad gives digits only when Num Lock is on. The accented letters
-  need the `bwpo(ortho)` xkb layout, except ù, which also works on a host with a
-  standard AZERTY layout
+  need the `bwpo(ortho)` keyboard layout, except ù, which also works with a
+  standard AZERTY keyboard layout
 - Holding the Adjust key of the Lower layer activates the Adjust layer, which
-  holds the keys for the bootloader and the host layouts
+  holds the keys for the bootloader and the layers for the host keyboard layouts
 
 ## One-shot keys
 

@@ -19,32 +19,36 @@ of this repository. The task also needs `gh` authenticated on GitHub. mise
 installs `gh`, and the `nu` that runs the task, from the `[tools]` section of
 `mise.toml`.
 
-## Host layout
+## Host keyboard layout
 
-The default layer is a standard QWERTY layout, for a host with a QWERTY layout.
-Keys on the Adjust layer switch to other layers:
+The default layer sends the keys of a standard QWERTY keyboard, for a host that
+uses a QWERTY keyboard layout. Keys on the Adjust layer switch to the following
+layers:
 
-- BWPO C, for a host that uses the `bwpo(ortho)` xkb layout. It sends the
-  QWERTY keycodes that this xkb layout turns into the bwpo layout
-- BWPO A produces the bwpo layout on a host that uses a standard AZERTY layout
-- QWERTY switches back to the default layer
+- QWERTY is the default layer
+- BWPO C is for a host that uses the `bwpo(ortho)` keyboard layout. It sends the
+  QWERTY keycodes that this keyboard layout turns into bwpo
+- BWPO A is for a host that uses a standard AZERTY keyboard layout. It sends the
+  keycodes that this keyboard layout turns into bwpo
 
-The `xkb` folder at the root of this repository contains the `bwpo(ortho)` xkb
-layout. To install it on Linux, copy or symlink that folder to `~/.config/xkb`.
+The `xkb` folder at the root of this repository contains the `bwpo(ortho)`
+keyboard layout. To install it on Linux, copy or symlink that folder to
+`~/.config/xkb`.
 
 ## Layers
 
 - The two Symbol keys of the thumb row activate a symbol layer. On the default
   layer, this symbol layer holds the US keys that the grid lacks
-- The Alt key of the right hand sends right Alt, which a host layout with AltGr
-  uses as AltGr
+- The Alt key of the right hand sends right Alt, which a keyboard layout with
+  AltGr uses as AltGr
 - Lower activates the function keys, the navigation keys, the editing shortcuts
   and Play/Pause
 - Raise activates the numeric keypad and the accented letters â, û, î, ê, ô and
-  ù. The accented letters need the `bwpo(ortho)` xkb layout, except ù, which
-  also works on a host with a standard AZERTY layout
+  ù. The accented letters need the `bwpo(ortho)` keyboard layout, except ù,
+  which also works with a standard AZERTY keyboard layout
 - Holding Lower and Raise activates the Adjust layer, which holds the keys for
-  the bootloader, the debug mode, the audio and the host layouts
+  the bootloader, the debug mode, the audio and the layers for the host keyboard
+  layouts
 
 ## One-shot keys
 
