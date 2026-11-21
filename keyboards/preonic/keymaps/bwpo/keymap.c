@@ -30,15 +30,12 @@ enum preonic_layers {
 };
 
 // Holding Lower then Raise, or Raise then Lower, activates the Adjust layer.
-// QMK tracks a single one-shot layer, so the layers that a one-shot key
-// activates hold no other one-shot layer key: they use MO and OSM instead.
 #define LOWER OSL(_LOWER)
 #define RAISE OSL(_RAISE)
 #define ADJUST MO(_ADJUST)
 
 #define O_LSFT OSM(MOD_LSFT)
 #define O_RSFT OSM(MOD_RSFT)
-#define O_RALT OSM(MOD_RALT)
 
 #define QWERTY TO(_QWERTY)
 #define BWPO_FA TO(_BWPO_FOR_AZERTY)
@@ -77,15 +74,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |      |      |      |      |      |      |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |Lower |      |      |      |      |Raise |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_Q_SYMB] = LAYOUT_preonic_grid( \
-  _______, _______, _______, _______,    _______, _______, _______, _______, _______,    _______, _______, _______, \
-  _______, _______, _______, _______,    _______, _______, _______, KC_MINS, KC_EQL,     KC_QUOT, KC_NUBS, _______, \
-  _______, _______, _______, _______,    _______, _______, _______, KC_LBRC, KC_RBRC,    KC_BSLS, KC_NUHS, _______, \
-  _______, _______, _______, _______,    _______, _______, _______, _______, _______,    _______, _______, _______, \
-  _______, _______, _______, MO(_LOWER), _______, _______, _______, _______, MO(_RAISE), _______, _______, _______  \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______, KC_MINS, KC_EQL,  KC_QUOT, KC_NUBS, _______, \
+  _______, _______, _______, _______, _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, KC_NUHS, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, \
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 /* bwpo for azerty
@@ -140,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   \  |   {  |   }  |   è  |   ~  |      |   _  |   `  |   #  |   ç  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |Lower |      |      |      |      |Raise |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_BFA_SYMB] = LAYOUT_preonic_grid( \
@@ -148,7 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, ALGR(KC_6), KC_2,       KC_1,         ALGR(KC_5), ALGR(KC_MINS), _______,    KC_EQL,    S(KC_QUOT), KC_LBRC,    KC_RBRC, _______, \
   _______, KC_0,       KC_NUBS,    S(KC_NUBS),   KC_5,       KC_MINS,       ALGR(KC_0), S(KC_EQL), KC_6,       S(KC_DOT),  KC_NUHS, _______, \
   _______, ALGR(KC_8), ALGR(KC_4), ALGR(KC_EQL), KC_7,       ALGR(KC_2),    _______,    KC_8,      ALGR(KC_7), ALGR(KC_3), KC_9,    _______, \
-  _______, _______,    _______,    MO(_LOWER),   _______,    _______,       _______,    _______,   MO(_RAISE), _______,    _______, _______  \
+  _______, _______,    _______,    _______,      _______,    _______,       _______,    _______,   _______,    _______,    _______, _______  \
 ),
 
 /* bwpo for custom
@@ -182,7 +179,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |   \  |   {  |   }  |   È  |   ~  |      |   _  |   `  |   #  |   Ç  |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |Lower |      |      |      |      |Raise |      |      |      |
+ * |      |      |      |      |      |      |      |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_BFC_SYMB] = LAYOUT_preonic_grid( \
@@ -190,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, ALGR(KC_Q), ALGR(KC_W), ALGR(KC_E), ALGR(KC_R), ALGR(KC_T), ALGR(KC_Y), ALGR(KC_U), ALGR(KC_I),    ALGR(KC_O),   ALGR(KC_P),    _______, \
   _______, ALGR(KC_A), ALGR(KC_S), ALGR(KC_D), ALGR(KC_F), ALGR(KC_G), ALGR(KC_H), ALGR(KC_J), ALGR(KC_K),    KC_NUBS,      ALGR(KC_SCLN), _______, \
   _______, ALGR(KC_Z), ALGR(KC_X), ALGR(KC_C), ALGR(KC_V), ALGR(KC_B), ALGR(KC_N), ALGR(KC_M), ALGR(KC_COMM), ALGR(KC_DOT), ALGR(KC_SLSH), _______, \
-  _______, _______,    _______,    MO(_LOWER), _______,    _______,    _______,    _______,    MO(_RAISE),    _______,      _______,       _______  \
+  _______, _______,    _______,    _______,    _______,    _______,    _______,    _______,    _______,       _______,      _______,       _______  \
 ),
 
 /* Lower
@@ -203,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      | Undo |  Cut | Copy |Paste |  F13 | PgDn | Left | Down |Right |PrtScr|      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |AltGr |      |      |AltGr |Adjust|      |      |      |
+ * |      |      |      |      |      |      |      |      |Adjust|      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid( \
@@ -211,7 +208,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_F1,   KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
   _______, XXXXXXX,    XXXXXXX,    XXXXXXX,    KC_MPLY,    KC_ESC,  KC_PGUP, KC_HOME, KC_UP,   KC_END,  KC_INS,  _______, \
   _______, LCTL(KC_T), LCTL(KC_C), LCTL(KC_H), LCTL(KC_U), KC_F13,  KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_PSCR, _______, \
-  _______, _______,    _______,    _______,    O_RALT,     _______, _______, O_RALT,  ADJUST,  _______, _______, _______  \
+  _______, _______,    _______,    _______,    _______,    _______, _______, _______, ADJUST,  _______, _______, _______  \
 ),
 
 /* Raise
@@ -226,7 +223,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Shift |      |      |      |      |   ù  |   0  |   1  |   2  |   3  |Enter |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | Alt  |Adjust|AltGr |Space |Enter |AltGr |Raise | Alt  | GUI  | Ctrl |
+ * | Ctrl | GUI  | Alt  |Adjust|Symbol|Space |Enter |Symbol|Raise | Alt  | GUI  | Ctrl |
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
@@ -234,7 +231,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PAST, KC_KP_7, KC_KP_8, KC_KP_9, KC_PMNS, _______, \
   _______, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, KC_PSLS, KC_KP_4, KC_KP_5, KC_KP_6, KC_PPLS, _______, \
   _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, KC_KP_0, KC_KP_1, KC_KP_2, KC_KP_3, KC_PENT, _______, \
-  _______, _______, _______, ADJUST,  O_RALT,  _______, _______, O_RALT,  _______, _______, _______, _______  \
+  _______, _______, _______, ADJUST,  _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
 /* Adjust (Lower + Raise)

@@ -23,3 +23,7 @@
 // Delay in milliseconds after which a tapped one-shot key is released if no
 // other key is pressed
 #define ONESHOT_TIMEOUT 5000
+
+// Only the layer of the last pressed layer key applies, as the readme of
+// users/bwpo describes
+#define LAST_LAYER_KEY_WINS

@@ -35,8 +35,7 @@ layout. To install it on Linux, copy or symlink that folder to `~/.config/xkb`.
 ## Layers
 
 - The two Symbol keys of the thumb row activate a symbol layer. On the default
-  layer, this symbol layer holds the US keys that the grid lacks. On the Lower
-  and Raise layers, the Symbol keys are AltGr keys
+  layer, this symbol layer holds the US keys that the grid lacks
 - The Alt key of the right hand sends right Alt, which a host layout with AltGr
   uses as AltGr
 - Lower activates the function keys, the navigation keys, the editing shortcuts
@@ -49,12 +48,13 @@ layout. To install it on Linux, copy or symlink that folder to `~/.config/xkb`.
 
 ## One-shot keys
 
-Lower, Raise, the Symbol keys and Shift are one-shot keys. A tap applies the
-layer or the modifier to the next key only, and holding the key applies it until
-its release. If you tap a one-shot key and press no other key, it is released
-after the delay set by `ONESHOT_TIMEOUT` in `config.h`.
+Lower, Raise and the Symbol keys are one-shot layer keys. The [readme of the bwpo
+userspace](../../../../users/bwpo/readme.md#layer-keys) describes how they work.
 
-On the BWPO A layer, Shift is a regular key.
+Shift is a one-shot modifier. A tap applies it to the next key only, and holding
+it applies it until its release. If you tap Shift and press no other key, it is
+released after the delay set by `ONESHOT_TIMEOUT` in `config.h`. On the BWPO A
+layer, Shift is a regular key.
 
 ## Sounds
 
