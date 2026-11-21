@@ -1,7 +1,8 @@
 {
     "indentWidth": 4,
     "markdown": {
-        "textWrap": "never"
+        "textWrap": "always",
+        "lineWidth": 80
     },
     "yaml": {
         "quotes": "preferSingle",

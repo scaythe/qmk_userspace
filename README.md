@@ -1,21 +1,35 @@
 # QMK Userspace
 
-This is a template repository which allows for an external set of QMK keymaps to be defined and compiled. This is useful for users who want to maintain their own keymaps without having to fork the [main QMK repository](https://github.com/qmk/qmk_firmware). You must still fork the main QMK repository if writing firmware for a _new_ keyboard.
+This is a template repository which allows for an external set of QMK keymaps to
+be defined and compiled. This is useful for users who want to maintain their own
+keymaps without having to fork the
+[main QMK repository](https://github.com/qmk/qmk_firmware). You must still fork
+the main QMK repository if writing firmware for a _new_ keyboard.
 
 ## Howto configure your build targets
 
-1. Run the normal `qmk setup` procedure if you haven't already done so -- see [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
+1. Run the normal `qmk setup` procedure if you haven't already done so -- see
+   [QMK Docs](https://docs.qmk.fm/#/newbs) for details.
 1. Fork this repository
 1. Clone your fork to your local machine
-1. Enable userspace in QMK config using `qmk config user.overlay_dir="$(realpath qmk_userspace)"`
+1. Enable userspace in QMK config using `qmk config user.overlay_dir="$(realpath
+   qmk_userspace)"`
 1. Add a new keymap for your board using `qmk new-keymap`
-   - This will create a new keymap in the `keyboards` directory, in the same location that would normally be used in the main QMK repository. For example, if you wanted to add a keymap for the Planck, it will be created in `keyboards/planck/keymaps/<your keymap name>`
-   - You can also create a new keymap using `qmk new-keymap -kb <your_keyboard> -km <your_keymap>`
-   - Alternatively, add your keymap manually by placing it in the location specified above.
-   - `layouts/<layout name>/<your keymap name>/keymap.*` is also supported if you prefer the layout system
-1. Add your keymap(s) to the build by running `qmk userspace-add -kb <your_keyboard> -km <your_keymap>`
+   - This will create a new keymap in the `keyboards` directory, in the same
+     location that would normally be used in the main QMK repository. For
+     example, if you wanted to add a keymap for the Planck, it will be created
+     in `keyboards/planck/keymaps/<your keymap name>`
+   - You can also create a new keymap using `qmk new-keymap -kb <your_keyboard>
+     -km <your_keymap>`
+   - Alternatively, add your keymap manually by placing it in the location
+     specified above.
+   - `layouts/<layout name>/<your keymap name>/keymap.*` is also supported if
+     you prefer the layout system
+1. Add your keymap(s) to the build by running `qmk userspace-add -kb
+   <your_keyboard> -km <your_keymap>`
    - This will automatically update your `qmk.json` file
-   - Corresponding `qmk userspace-remove -kb <your_keyboard> -km <your_keymap>` will delete it
+   - Corresponding `qmk userspace-remove -kb <your_keyboard> -km <your_keymap>`
+     will delete it
    - Listing the build targets can be done with `qmk userspace-list`
 1. Commit your changes
 
@@ -29,25 +43,41 @@ This is a template repository which allows for an external set of QMK keymaps to
 
 ## Howto build locally
 
-`mise run compile` compiles the firmware in a container, without installing QMK on the host. The [Tasks](#tasks) section describes it.
+`mise run compile` compiles the firmware in a container, without installing QMK
+on the host. The [Tasks](#tasks) section describes it.
 
 ## Tasks
 
-`mise.toml` and the `mise-tasks` folder define tasks that mise runs with the tools of the `[tools]` section of `mise.toml`:
+`mise.toml` and the `mise-tasks` folder define tasks that mise runs with the
+tools of the `[tools]` section of `mise.toml`:
 
-- `mise run compile` compiles the firmware of the build targets of `qmk.json` in the `ghcr.io/qmk/qmk_cli` container image, with podman, and copies it to the root of the repository. It uses the `qmk_firmware` clone next to this repository, and clones it with its submodules if it is missing. It shows the commit of this clone, and does not update it
-- `mise run flash-preonic` flashes the Preonic with the firmware of the latest GitHub release. With `--local`, it flashes the firmware compiled locally. The [readme of the Preonic keymap](keyboards/preonic/keymaps/bwpo/readme.md#flashing) describes this task
+- `mise run compile` compiles the firmware of the build targets of `qmk.json` in
+  the `ghcr.io/qmk/qmk_cli` container image, with podman, and copies it to the
+  root of the repository. It uses the `qmk_firmware` clone next to this
+  repository, and clones it with its submodules if it is missing. It shows the
+  commit of this clone, and does not update it
+- `mise run flash-preonic` flashes the Preonic with the firmware of the latest
+  GitHub release. With `--local`, it flashes the firmware compiled locally. The
+  [readme of the Preonic keymap](keyboards/preonic/keymaps/bwpo/readme.md#flashing)
+  describes this task
 - `mise run lint` checks that the Nushell scripts of the tasks parse
 
 ## Formatting
 
-`dprint fmt` formats the C files with clang-format, according to `.clang-format`, and the JSON, Markdown, TOML and YAML files with its own plugins. mise installs dprint and clang-format from the `[tools]` section of `mise.toml`. In the keymaps, `// clang-format off` and `// clang-format on` surround the keymap arrays, whose columns are aligned by hand.
+`dprint fmt` formats the C files with clang-format, according to
+`.clang-format`, and the JSON, Markdown, TOML and YAML files with its own
+plugins. mise installs dprint and clang-format from the `[tools]` section of
+`mise.toml`. In the keymaps, `// clang-format off` and `// clang-format on`
+surround the keymap arrays, whose columns are aligned by hand.
 
 ## Extra info
 
-If you wish to point GitHub actions to a different repository, a different branch, or even a different keymap name, you can modify `.github/workflows/build_binaries.yml` to suit your needs.
+If you wish to point GitHub actions to a different repository, a different
+branch, or even a different keymap name, you can modify
+`.github/workflows/build_binaries.yml` to suit your needs.
 
-To override the `build` job, you can change the following parameters to use a different QMK repository or branch:
+To override the `build` job, you can change the following parameters to use a
+different QMK repository or branch:
 
 ```
 with:
@@ -55,9 +85,15 @@ with:
   qmk_ref: master
 ```
 
-If you wish to manually manage `qmk_firmware` using git within the userspace repository, you can add `qmk_firmware` as a submodule in the userspace directory instead. GitHub Actions will automatically use the submodule at the pinned revision if it exists, otherwise it will use the default latest revision of `qmk_firmware` from the main repository.
+If you wish to manually manage `qmk_firmware` using git within the userspace
+repository, you can add `qmk_firmware` as a submodule in the userspace directory
+instead. GitHub Actions will automatically use the submodule at the pinned
+revision if it exists, otherwise it will use the default latest revision of
+`qmk_firmware` from the main repository.
 
-This can also be used to control which fork is used, though only upstream `qmk_firmware` will have support for external userspace until other manufacturers update their forks.
+This can also be used to control which fork is used, though only upstream
+`qmk_firmware` will have support for external userspace until other
+manufacturers update their forks.
 
 1. (First time only) `git submodule add https://github.com/qmk/qmk_firmware.git`
 1. (To update) `git submodule update --init --recursive`
