@@ -9,19 +9,21 @@ in the Raw data tab of
 
 ## Flashing
 
-`mise run flash-preonic` shows the commit and the date of the latest GitHub
+`mise run flash:preonic` shows the commit and the date of the latest GitHub
 release of this repository, and asks for confirmation. It then downloads the
-firmware from this release, waits a few seconds so that you can put the Preonic
-in bootloader mode, and flashes it.
+firmware from this release, waits until the Preonic is in bootloader mode, and
+flashes it.
 
-With `--local`, `mise run flash-preonic` flashes the locally compiled firmware,
+With `--local`, `mise run flash:preonic` flashes the locally compiled firmware,
 `preonic_rev3_bwpo.bin` at the root of the repository, instead of the release.
 The task shows the modification date of this file before it asks for
 confirmation.
 
-The task flashes with the `dfu-util` of the distrobox container `qmk`. If this
-container does not exist, the task creates it from `distrobox.ini` at the root
-of this repository. Without `--local`, the task also needs `gh` authenticated on
+With `--yes` or `-y`, `mise run flash:preonic` flashes without asking for
+confirmation.
+
+The task flashes the Preonic with the `dfu-util` of the `ghcr.io/qmk/qmk_cli`
+container image. Without `--local`, the task also needs `gh` authenticated on
 GitHub. mise installs `gh`, and the `nu` that runs the task, from the `[tools]`
 section of `mise.toml`.
 

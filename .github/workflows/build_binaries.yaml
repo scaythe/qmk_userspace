@@ -10,7 +10,6 @@ on:
       - '**.kle.json'
       - 'mise.toml'
       - 'mise-tasks/**'
-      - 'distrobox.ini'
       - 'dprint.json'
       - '.editorconfig'
       - '.clang-format'

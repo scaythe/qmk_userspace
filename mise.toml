@@ -5,5 +5,5 @@ gh = "latest"
 nu = "0.117.0"
 
 [tasks.lint]
-description = "Check that the Nushell scripts of the mise tasks parse"
-run = "nu -c 'glob mise-tasks/*.nu | each {|script| nu-check --debug $script } | ignore'"
+description = "Check the syntax of the Nushell scripts of the mise tasks and of their modules"
+run = "nu -c 'glob mise-tasks/**/*.nu | each {|script| nu-check --debug $script } | ignore'"

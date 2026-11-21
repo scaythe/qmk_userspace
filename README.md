@@ -44,11 +44,12 @@ podman is missing:
   repository. It uses the `qmk_firmware` clone next to this repository, and
   clones it with its submodules if it is missing. It shows the commit of this
   clone, and does not update it
-- `mise run flash-preonic` flashes the Preonic with the firmware of the latest
+- `mise run flash:preonic` flashes the Preonic with the firmware of the latest
   GitHub release. With `--local`, it flashes the firmware compiled locally. The
   [readme of the Preonic keymap](keyboards/preonic/keymaps/bwpo/readme.md#flashing)
   describes this task
-- `mise run lint` checks that the Nushell scripts of the tasks parse
+- `mise run lint` checks the syntax of the Nushell scripts of the tasks and of
+  their modules
 
 ## Formatting
 
