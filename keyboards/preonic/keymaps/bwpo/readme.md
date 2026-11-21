@@ -21,17 +21,24 @@ installs `gh`, and the `nu` that runs the task, from the `[tools]` section of
 
 ## Host layout
 
-The default layer sends standard QWERTY keycodes that the `bwpo(ortho)` xkb layout
-maps to the bwpo layout. The `xkb` folder at the root of this repository
-contains this layout. To install it on Linux, copy or symlink that folder to
-`~/.config/xkb`.
+The default layer is a standard QWERTY layout, for a host with a QWERTY layout.
+Keys on the Adjust layer switch to other layers:
 
-Keys on the Adjust layer switch to the layers that produce the same layout on a
-host that uses a standard QWERTY or AZERTY layout.
+- BWPO C, for a host that uses the `bwpo(ortho)` xkb layout. It sends the
+  QWERTY keycodes that this xkb layout turns into the bwpo layout
+- BWPO Q produces the bwpo layout on a host that uses a standard QWERTY layout
+- BWPO A produces the bwpo layout on a host that uses a standard AZERTY layout
+- QWERTY symb adds to the default layer a symbol layer that holds the US keys
+  that the grid lacks
+- QWERTY switches back to the default layer
+
+The `xkb` folder at the root of this repository contains the `bwpo(ortho)` xkb
+layout. To install it on Linux, copy or symlink that folder to `~/.config/xkb`.
 
 ## Layers
 
-- AltGr activates the symbol layer
+- On the default layer, AltGr is a modifier. On the other layers, AltGr
+  activates a symbol layer
 - Lower activates the function keys, the navigation keys, the editing shortcuts
   and Play/Pause
 - Raise activates the numeric keypad and the accented letters â, û, î, ê, ô and
@@ -47,8 +54,7 @@ modifier to the next key only, and holding the key applies it until its release.
 If you tap a one-shot key and press no other key, it is released after the delay
 set by `ONESHOT_TIMEOUT` in `config.h`.
 
-On the layers for a host with a standard QWERTY or AZERTY layout, Shift is a
-regular key.
+On the BWPO Q and BWPO A layers, Shift is a regular key.
 
 ## Sounds
 
