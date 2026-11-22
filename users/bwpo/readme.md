@@ -34,3 +34,8 @@ Code shared by the bwpo keymaps. QMK builds it with every keymap named `bwpo`.
 `oneshot_mods.c` cancels a pending one-shot modifier when its OSM key, or the
 OSM key of the same modifier on the other side, is tapped. QMK adds the modifier
 again on a slow tap, and ignores a quick one.
+
+Tapping both Shift keys turns Caps Lock on, and tapping one of them turns it
+off. When the Shift of the other side is held or pending, or when Caps Lock is
+on, a tap on a one-shot Shift sends Caps Lock instead, and cancels a pending
+Shift. The host reports the state of Caps Lock through the keyboard LEDs.

@@ -49,6 +49,10 @@ The `xkb` folder at the root of this repository contains the `bwpo(ortho)`
 keyboard layout. To install it on Linux, copy or symlink that folder to
 `~/.config/xkb`.
 
+The Compose key sends Menu, which the `bwpo(ortho)` keyboard layout turns into
+Compose. With another keyboard layout, the xkb option `compose:menu` does the
+same.
+
 The Lock key sends Super+End. The desktop must bind this shortcut to locking the
 session.
 
@@ -81,3 +85,9 @@ its release. If you tap the key and press no other key, the modifier is released
 after the delay set by `ONESHOT_TIMEOUT` in `config.h`. The
 [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#one-shot-modifiers)
 describes how a tap on the key cancels the modifier while it is pending.
+
+The keymap has no Caps Lock key. The Shift keys turn Caps Lock on and off by
+sending the Caps Lock keycode, as the
+[readme of the bwpo userspace](../../../../../users/bwpo/readme.md#one-shot-modifiers)
+describes. The host must not remap that keycode, as the xkb option
+`compose:caps` does.

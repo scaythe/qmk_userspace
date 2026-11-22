@@ -28,7 +28,7 @@
 default xkb_symbols "ortho" {
     include "us"
     include "level3(ralt_switch)"
-    include "compose(caps)"
+    include "compose(menu)"
     include "bwpo(common)"
 
     name[Group1]="bwpo (ortho)";
