@@ -86,8 +86,8 @@ after the delay set by `ONESHOT_TIMEOUT` in `config.h`. The
 [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#one-shot-modifiers)
 describes how a tap on the key cancels the modifier while it is pending.
 
-The keymap has no Caps Lock key. The Shift keys turn Caps Lock on and off by
-sending the Caps Lock keycode, as the
+The Shift keys turn Caps Lock on and off by sending the Caps Lock keycode, as
+the
 [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#one-shot-modifiers)
 describes. The host must not remap that keycode, as the xkb option
 `compose:caps` does.
