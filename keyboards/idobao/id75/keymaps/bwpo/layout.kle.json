@@ -41,7 +41,7 @@
         {
             "a": 4
         },
-        "M",
+        "M\n\n\n€",
         "V\n\n\n=",
         "D\n\n\n%",
         "L\n\n\n^",
@@ -109,7 +109,7 @@
             "a": 4
         },
         "?\n'",
-        "Q\n\n\n_",
+        "Q",
         "G\n\n\n`",
         "H\n\n\n#",
         "F\n\nÇ",
@@ -124,10 +124,22 @@
         "Alt",
         "&dArr;",
         "AltGr",
-        "Space",
+        {
+            "a": 4
+        },
+        "Space\n\n\n_",
+        {
+            "a": 7
+        },
         "Enter",
         "",
-        "Space",
+        {
+            "a": 4
+        },
+        "Space\n\n\n_",
+        {
+            "a": 7
+        },
         "Enter",
         "AltGr",
         "&dArr;",

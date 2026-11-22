@@ -29,7 +29,7 @@
         "P\n\n\n&",
         "O\n\n\n[",
         "Z\n\n\n]",
-        "M",
+        "M\n\n\n€",
         "V\n\n\n=",
         "D\n\n\n%",
         "L\n\n\n^",
@@ -76,7 +76,7 @@
         ":\n.\nÈ",
         "K\n\n\n~",
         "?\n'",
-        "Q\n\n\n_",
+        "Q",
         "G\n\n\n`",
         "H\n\n\n#",
         "F\n\nÇ",
@@ -91,7 +91,13 @@
         "Alt",
         "&dArr;",
         "AltGr",
-        "Space",
+        {
+            "a": 4
+        },
+        "Space\n\n\n_",
+        {
+            "a": 7
+        },
         "Enter",
         "AltGr",
         "&uArr;",
