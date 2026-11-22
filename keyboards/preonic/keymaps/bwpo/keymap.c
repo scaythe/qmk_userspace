@@ -22,7 +22,6 @@ enum preonic_layers {
     _BWPO_FOR_AZERTY,
     _BFA_SYMB,
     _BWPO_FOR_CUSTOM,
-    _BFC_SYMB,
     _LOWER,
     _RAISE,
     _ADJUST,
@@ -35,6 +34,7 @@ enum preonic_layers {
 
 #define O_LSFT OSM(MOD_LSFT)
 #define O_RSFT OSM(MOD_RSFT)
+#define O_RALT OSM(MOD_RALT)
 
 #define QWERTY TO(_QWERTY)
 #define BWPO_FA TO(_BWPO_FOR_AZERTY)
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | LAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |AltGr |Space |Enter |AltGr |Raise | LAlt | GUI  | Ctrl |
  * `-----------------------------------------------------------------------------------'
  */
 [_BWPO_FOR_CUSTOM] = LAYOUT_preonic_grid( \
@@ -145,28 +145,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______, _______, _______, _______, _______,        _______, _______, _______,        _______, _______, _______, _______, \
   _______, _______, _______, _______, _______,        _______, _______, _______,        _______, _______, _______, _______, \
   _______, _______, _______, _______, _______,        _______, _______, _______,        _______, _______, _______, _______, \
-  _______, _______, _______, _______, OSL(_BFC_SYMB), _______, _______, OSL(_BFC_SYMB), _______, _______, _______, _______  \
-),
-
-/* bwpo for custom symbols
- * ,-----------------------------------------------------------------------------------.
- * |      |      |      |      |      |      |      |      |      |      |      |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |   |  |   É  |   &  |   [  |   ]  |   €  |   =  |   %  |   ^  |   $  |      |
- * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |   À  |   <  |   >  |   (  |   )  |   @  |   +  |   -  |   /  |   *  |      |
- * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      |   \  |   {  |   }  |   È  |   ~  |      |      |   `  |   #  |   Ç  |      |
- * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |   _  |      |      |      |      |      |      |
- * `-----------------------------------------------------------------------------------'
- */
-[_BFC_SYMB] = LAYOUT_preonic_grid( \
-  _______, _______,    _______,    _______,    _______,    _______,      _______,    _______,    _______,       _______,      _______,       _______, \
-  _______, ALGR(KC_Q), ALGR(KC_W), ALGR(KC_E), ALGR(KC_R), ALGR(KC_T),   ALGR(KC_Y), ALGR(KC_U), ALGR(KC_I),    ALGR(KC_O),   ALGR(KC_P),    _______, \
-  _______, ALGR(KC_A), ALGR(KC_S), ALGR(KC_D), ALGR(KC_F), ALGR(KC_G),   ALGR(KC_H), ALGR(KC_J), ALGR(KC_K),    KC_NUBS,      ALGR(KC_SCLN), _______, \
-  _______, ALGR(KC_Z), ALGR(KC_X), ALGR(KC_C), ALGR(KC_V), ALGR(KC_B),   ALGR(KC_N), ALGR(KC_M), ALGR(KC_COMM), ALGR(KC_DOT), ALGR(KC_SLSH), _______, \
-  _______, _______,    _______,    _______,    _______,    ALGR(KC_SPC), _______,    _______,    _______,       _______,      _______,       _______  \
+  _______, _______, _______, _______, O_RALT,         _______, _______, O_RALT,         _______, _______, _______, _______  \
 ),
 
 /* Lower
@@ -258,7 +237,7 @@ const key_override_t *key_overrides[] = {
 // modifier, is activated or released
 
 #    define LAYER_BIT(layer) ((layer_state_t)1 << (layer))
-#    define SYMBOL_LAYERS (LAYER_BIT(_Q_SYMB) | LAYER_BIT(_BFA_SYMB) | LAYER_BIT(_BFC_SYMB))
+#    define SYMBOL_LAYERS (LAYER_BIT(_Q_SYMB) | LAYER_BIT(_BFA_SYMB))
 #    define SIGNALED_LAYERS (LAYER_BIT(_LOWER) | LAYER_BIT(_RAISE) | LAYER_BIT(_ADJUST) | SYMBOL_LAYERS)
 
 static float adjust_on_song[][2]        = SONG(S__NOTE(_C6));

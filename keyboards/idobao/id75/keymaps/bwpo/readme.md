@@ -55,7 +55,9 @@ session.
 ## Layers
 
 - The two Symbol keys of the thumb row activate a symbol layer. On the default
-  layer, this symbol layer holds the US keys that the grid lacks
+  layer, this symbol layer holds the US keys that the grid lacks. On the BWPO C
+  layer, the Symbol keys send right Alt instead, which the `bwpo(ortho)`
+  keyboard layout uses as AltGr
 - Both Alt keys send left Alt, which stays Alt with a keyboard layout that uses
   right Alt as AltGr
 - Lower activates the function keys, the numeric keypad, the navigation keys,
@@ -68,12 +70,14 @@ session.
 
 ## One-shot keys
 
-Lower and the Symbol keys are one-shot layer keys. The
+Lower and the Symbol keys are one-shot layer keys, except the Symbol keys of the
+BWPO C layer. The
 [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#layer-keys)
 describes how they work.
 
-Shift is a one-shot modifier. A tap applies it to the next key only, and holding
-it applies it until its release. If you tap Shift and press no other key, it is
-released after the delay set by `ONESHOT_TIMEOUT` in `config.h`. The
+Shift and the Symbol keys of the BWPO C layer are one-shot modifiers. A tap
+applies the modifier to the next key only, and holding the key applies it until
+its release. If you tap the key and press no other key, the modifier is released
+after the delay set by `ONESHOT_TIMEOUT` in `config.h`. The
 [readme of the bwpo userspace](../../../../../users/bwpo/readme.md#one-shot-modifiers)
-describes how a tap on Shift cancels it while it is pending.
+describes how a tap on the key cancels the modifier while it is pending.
