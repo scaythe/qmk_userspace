@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
  * |Shift |  Z   |  X   |  C   |  V   |  B   | Left | Down |Right |  N   |  M   |  ,   |  .   |  /   |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |      |Space |Enter |Symbol|Lower | RAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |      |Space |Enter |Symbol|Lower | LAlt | GUI  | Ctrl |
  * `--------------------------------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_ortho_5x15(
@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,  KC_R,         KC_T,   KC_PGUP, KC_INS,      KC_HOME, KC_Y,   KC_U,         KC_I,    KC_O,    KC_P,    KC_CAPS,
   KC_BSPC, KC_A,    KC_S,    KC_D,  KC_F,         KC_G,   KC_PGDN, KC_UP,       KC_END,  KC_H,   KC_J,         KC_K,    KC_L,    KC_SCLN, KC_DEL,
   O_LSFT,  KC_Z,    KC_X,    KC_C,  KC_V,         KC_B,   KC_LEFT, KC_DOWN,     KC_RGHT, KC_N,   KC_M,         KC_COMM, KC_DOT,  KC_SLSH, O_RSFT,
-  KC_LCTL, KC_LGUI, KC_LALT, LOWER, OSL(_Q_SYMB), KC_SPC, KC_ENT,  XXXXXXX,     KC_SPC,  KC_ENT, OSL(_Q_SYMB), LOWER,   KC_RALT, KC_RGUI, KC_RCTL
+  KC_LCTL, KC_LGUI, KC_LALT, LOWER, OSL(_Q_SYMB), KC_SPC, KC_ENT,  XXXXXXX,     KC_SPC,  KC_ENT, OSL(_Q_SYMB), LOWER,   KC_LALT, KC_RGUI, KC_RCTL
 ),
 
 /* qwerty symbols
@@ -93,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
  * |Shift |  "   |  Y   |  X   |  .   |  K   | Left | Down |Right |  '   |  Q   |  G   |  H   |  F   |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |      |Space |Enter |Symbol|Lower | RAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |      |Space |Enter |Symbol|Lower | LAlt | GUI  | Ctrl |
  * `--------------------------------------------------------------------------------------------------------'
  */
 [_BWPO_FOR_AZERTY] = LAYOUT_ortho_5x15(
@@ -135,7 +135,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
  * |Shift |  Z   |  X   |  C   |  V   |  B   | Left | Down |Right |  N   |  M   |  ,   |  .   |  /   |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |      |Space |Enter |Symbol|Lower | RAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |      |Space |Enter |Symbol|Lower | LAlt | GUI  | Ctrl |
  * `--------------------------------------------------------------------------------------------------------'
  */
 [_BWPO_FOR_CUSTOM] = LAYOUT_ortho_5x15(

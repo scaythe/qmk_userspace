@@ -56,8 +56,8 @@ session.
 
 - The two Symbol keys of the thumb row activate a symbol layer. On the default
   layer, this symbol layer holds the US keys that the grid lacks
-- The Alt key of the right hand sends right Alt, which a keyboard layout with
-  AltGr uses as AltGr
+- Both Alt keys send left Alt, which stays Alt with a keyboard layout that uses
+  right Alt as AltGr
 - Lower activates the function keys, the numeric keypad, the navigation keys,
   the editing shortcuts and the accented letters â, û, î, ê, ô and ù. The
   numeric keypad gives digits only when Num Lock is on, and the Num Lock key is

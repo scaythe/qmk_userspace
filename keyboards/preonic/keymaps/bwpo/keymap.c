@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | RAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | LAlt | GUI  | Ctrl |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
@@ -61,7 +61,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,  KC_R,         KC_T,   KC_Y,   KC_U,         KC_I,    KC_O,    KC_P,    KC_CAPS, \
   KC_BSPC, KC_A,    KC_S,    KC_D,  KC_F,         KC_G,   KC_H,   KC_J,         KC_K,    KC_L,    KC_SCLN, KC_DEL,  \
   O_LSFT,  KC_Z,    KC_X,    KC_C,  KC_V,         KC_B,   KC_N,   KC_M,         KC_COMM, KC_DOT,  KC_SLSH, O_RSFT,  \
-  KC_LCTL, KC_LGUI, KC_LALT, LOWER, OSL(_Q_SYMB), KC_SPC, KC_ENT, OSL(_Q_SYMB), RAISE,   KC_RALT, KC_RGUI, KC_RCTL  \
+  KC_LCTL, KC_LGUI, KC_LALT, LOWER, OSL(_Q_SYMB), KC_SPC, KC_ENT, OSL(_Q_SYMB), RAISE,   KC_LALT, KC_RGUI, KC_RCTL  \
 ),
 
 /* qwerty symbols
@@ -95,7 +95,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Shift |   "  |   Y  |   X  |   .  |   K  |   '  |   Q  |   G  |   H  |   F  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | RAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | LAlt | GUI  | Ctrl |
  * `-----------------------------------------------------------------------------------'
  */
 [_BWPO_FOR_AZERTY] = LAYOUT_preonic_grid( \
@@ -137,7 +137,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |Shift |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Shift |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | RAlt | GUI  | Ctrl |
+ * | Ctrl | GUI  | LAlt |Lower |Symbol|Space |Enter |Symbol|Raise | LAlt | GUI  | Ctrl |
  * `-----------------------------------------------------------------------------------'
  */
 [_BWPO_FOR_CUSTOM] = LAYOUT_preonic_grid( \
