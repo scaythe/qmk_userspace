@@ -1,25 +1,25 @@
 # bwpo QMK userspace
 
-This repository holds the bwpo keymaps of the Preonic rev3 and of the IDOBAO
-ID75 v2. It is a [QMK userspace](https://docs.qmk.fm/newbs_external_userspace),
-which QMK compiles together with a separate clone of
+This repository holds the bwpo keymaps of the Preonic rev3 and of the Idobao x
+YMDK ID75 with an RP2040. It is a
+[QMK userspace](https://docs.qmk.fm/newbs_external_userspace), which QMK
+compiles together with a separate clone of
 [qmk_firmware](https://github.com/qmk/qmk_firmware), without a fork of it.
 
 ## Contents
 
 - [`keyboards/preonic/keymaps/bwpo`](keyboards/preonic/keymaps/bwpo/readme.md)
   holds the keymap of the Preonic rev3
-- [`keyboards/idobao/id75/keymaps/bwpo`](keyboards/idobao/id75/keymaps/bwpo/readme.md)
-  holds the keymap of the ID75 v2
+- [`keyboards/ymdk/id75/keymaps/bwpo`](keyboards/ymdk/id75/keymaps/bwpo/readme.md)
+  holds the keymap of the ID75
 - [`users/bwpo`](users/bwpo/readme.md) holds the code shared by the keymaps
   named `bwpo`
 - `xkb` holds the `bwpo(ortho)` keyboard layout for Linux hosts. The readmes of
   the keymaps describe how to install it
 - `xorg` holds the X configuration of the bwpo keyboards. The comments of
   `50-bwpo-keyboards.conf` describe how to install it
-- `udev` holds the udev rules that give access to the bootloaders of the bwpo
-  keyboards. The comments of `50-bwpo-keyboards.rules` describe how to install
-  it
+- `udev` holds the udev rules that give access to the bootloader of the Preonic.
+  The comments of `50-bwpo-keyboards.rules` describe how to install it
 - `qmk.json` lists the build targets, each made of a keyboard and a keymap
 
 ## Build with GitHub
@@ -49,7 +49,7 @@ podman is missing:
   clone, and does not update it
 - `mise run flash:id75` flashes the ID75 with the firmware of the latest GitHub
   release. With `--local`, it flashes the firmware compiled locally. The
-  [readme of the ID75 keymap](keyboards/idobao/id75/keymaps/bwpo/readme.md#flashing)
+  [readme of the ID75 keymap](keyboards/ymdk/id75/keymaps/bwpo/readme.md#flashing)
   describes this task
 - `mise run flash:preonic` flashes the Preonic with the firmware of the latest
   GitHub release. With `--local`, it flashes the firmware compiled locally. The

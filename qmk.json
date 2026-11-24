@@ -2,6 +2,6 @@
     "userspace_version": "1.0",
     "build_targets": [
         ["preonic/rev3", "bwpo"],
-        ["idobao/id75/v2", "bwpo"]
+        ["ymdk/id75/rp2040", "bwpo"]
     ]
 }

@@ -1,10 +1,8 @@
-# Gives the logged-in user access to the bootloaders of the bwpo keyboards, so
-# that this user can flash them without root. The first rule matches the STM32
-# DFU bootloader of the Preonic rev3, and the second one the atmel-dfu
-# bootloader of the ATmega32U4 of the ID75 v2.
+# Gives the logged-in user access to the STM32 DFU bootloader of the Preonic
+# rev3, so that this user can flash it without root. The ID75 needs no rule,
+# because its RP2040 bootloader shows up as a drive that the desktop mounts.
 #
 # To install this file, copy it to /etc/udev/rules.d/, then run
 # udevadm control --reload as root.
 
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", TAG+="uaccess"
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2ff4", TAG+="uaccess"
