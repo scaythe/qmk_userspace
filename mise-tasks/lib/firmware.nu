@@ -33,17 +33,19 @@ def print-latest-release [] {
   print $"Latest release: commit ($commit.sha | str substring 0..6) ($subject), published on ($published)"
 }
 
+# Every run downloads to the same folder, so that an interrupted run does not
+# leave a folder behind
 def download-and-flash-latest-release [firmware: string, flash: closure] {
-  let dir = mktemp --directory --tmpdir-path ($env.HOME | path join ".cache") "flash-firmware.XXXXXX"
-  try {
-    ^gh release download latest --pattern $firmware --dir $dir
-    do $flash ($dir | path join $firmware)
-  } finally {
-    rm --recursive $dir
-  }
+  let dir = $env.HOME | path join ".cache" "bwpo-firmware"
+  mkdir $dir
+  ^gh release download latest --pattern $firmware --dir $dir --clobber
+  do $flash ($dir | path join $firmware)
 }
 
 def confirm-flash [] {
+  if not (is-terminal --stdin) {
+    error make {msg: "Confirmation needs a terminal. Run the task with --yes to flash without asking"}
+  }
   if (input "Flash this firmware? [y/N] ") not-in ["y" "Y"] {
     print "Flash cancelled"
     exit 0
